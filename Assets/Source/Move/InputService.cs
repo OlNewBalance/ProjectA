@@ -20,6 +20,7 @@ namespace Source.Move
         private void FixedUpdate()
         {
             _move = _inputActions.Keyboard.WASD.ReadValue<Vector2>();
+            Debug.Log("Suka8");
             _mouse = _inputActions.Mouse.MousePosition.ReadValue<Vector2>();
             _inputActions.Mouse.LeftMouseButton.performed += OnLeftMouseBotton;
         }
@@ -41,13 +42,16 @@ namespace Source.Move
 
         public Vector2 KeyBoardValue()
         {
+            Debug.Log("Suka6");
             return _move;
-            Debug.Log("Suka");
+            Debug.Log("Suka7");
         }
 
         public Vector2 MouseValue()
         {
+            Debug.Log("Suka9");
             return _mouse;
+            Debug.Log("Suka10");
         }
     }
 }

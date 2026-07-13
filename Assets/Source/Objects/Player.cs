@@ -13,6 +13,8 @@ namespace Source.Objects
 
         public float ShootPower { get; }
         public float MoveSpeed { get; }
+
+        private float _moveSpeed = 15;
         private int _health = 0;
 
         private void Awake()
@@ -40,13 +42,23 @@ namespace Source.Objects
 
         public void Move()
         {
+            Vector2 mraz = _inputService.KeyBoardValue();
+            if (mraz == null)
+            {
+                Debug.Log("MRAZ");
+                return;
+            }
+            Debug.Log("Suka1");
             //Vector2 moveForce = new Vector3(_inputService.KeyBoardValue().x, _inputService.KeyBoardValue().y);
-            Vector2 moveForce = _inputService.KeyBoardValue();
-            _rigidbody.AddForce(moveForce * MoveSpeed, ForceMode2D.Force);
+            Debug.Log("Suka2");
+            _rigidbody.AddForce(_inputService.KeyBoardValue() * _moveSpeed, ForceMode2D.Force);
+            Debug.Log("Suka3");
 
             //Vector3 lookForce = new Vector3(_inputService.MouseValue().x, _inputService.MouseValue().y);
-            Vector3 lookForce = _inputService.MouseValue();
-            _rigidbody.AddTorque(lookForce.z * MoveSpeed, ForceMode2D.Impulse);
+            Vector2 lookForce = _inputService.MouseValue();
+            Debug.Log("Suka4");
+            //_rigidbody.AddTorque((lookForce.x ) * _moveSpeed, ForceMode2D.Force);//
+            Debug.Log("Suka5");
         }
 
         public void TakeDamage(int damage, Bullet thisBullet)
