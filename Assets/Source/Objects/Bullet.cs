@@ -1,11 +1,14 @@
+using System;
 using Source.Health;
 using UnityEngine;
 
 namespace Source.Objects
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Bullet : MonoBehaviour, IBullet
     {
         public int Damage { get; }
+
         private Rigidbody2D _rigidbody;
 
         private void Awake()
@@ -21,9 +24,15 @@ namespace Source.Objects
             }
         }
 
-        public Rigidbody2D GetRigidbody() 
-        { 
-            return _rigidbody;
+        public void Shoot(Vector2 direction)
+        {
+            Debug.Log(direction.normalized);
+            _rigidbody.AddForce(direction.normalized * 250f,  ForceMode2D.Impulse);
+        }
+
+        public float BulletTimeoutSeconds()
+        {
+            return 10f;
         }
     }
 }

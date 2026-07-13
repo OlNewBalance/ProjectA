@@ -1,27 +1,31 @@
-using System.Drawing;
 using UnityEngine;
 
 namespace Source.Objects
 {
+    
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour, Source.Shoot.IShoot, Source.Health.IHealth, Source.Move.IMove
     {
-        [SerializeField] private Source.Move.InputService _inputService;
-        [SerializeField] private Bullet _bulletPrefab;
-        [SerializeField] private Rigidbody2D _rigidbody;
-        [SerializeField] private Camera _camera;
+        [SerializeField] private Source.Move.InputService inputService;
+        [SerializeField] private Bullet bulletPrefab;
+        [SerializeField] private UnityEngine.Camera camera;
+        [SerializeField] private Transform bulletOrigin;
+        [SerializeField]private int health = 100;
         private BulletPool _bulletPool;
+        private Rigidbody2D _rigidbody;
 
         public float ShootPower { get; }
         public float MoveSpeed { get; }
 
         private float _moveSpeed = 15;
-        private int _health = 0;
+        private float _rotationSpeed = 5;
 
         private void Awake()
         {
-            _health = 100;
+            
+            health = 100;
             _bulletPool = new BulletPool();
-            _bulletPool.Init(_bulletPrefab);
+            _bulletPool.Init(bulletPrefab);
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
@@ -33,43 +37,45 @@ namespace Source.Objects
         public void Shoot()
         {
             Bullet bullet = _bulletPool.GetBullet();
-            Rigidbody2D bulletRigidBody = bullet.GetRigidbody();
+            StartCoroutine(_bulletPool.ReturnBulletCallback(bullet, bullet.BulletTimeoutSeconds()));
+            
+            bullet.transform.position = bulletOrigin.position;
+            bullet.transform.rotation = bulletOrigin.rotation;
 
-            RaycastHit2D hit = Physics2D.Raycast(_camera.transform.position, _inputService.MouseValue());
-
-            bulletRigidBody.AddForce(hit.point, ForceMode2D.Impulse);
+            bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position);
+            
         }
 
         public void Move()
         {
-            Vector2 mraz = _inputService.KeyBoardValue();
-            if (mraz == null)
-            {
-                Debug.Log("MRAZ");
-                return;
-            }
-            Debug.Log("Suka1");
-            //Vector2 moveForce = new Vector3(_inputService.KeyBoardValue().x, _inputService.KeyBoardValue().y);
-            Debug.Log("Suka2");
-            _rigidbody.AddForce(_inputService.KeyBoardValue() * _moveSpeed, ForceMode2D.Force);
-            Debug.Log("Suka3");
+            HandleMovement();
+            HandleRotation();
+        }
 
-            //Vector3 lookForce = new Vector3(_inputService.MouseValue().x, _inputService.MouseValue().y);
-            Vector2 lookForce = _inputService.MouseValue();
-            Debug.Log("Suka4");
-            //_rigidbody.AddTorque((lookForce.x ) * _moveSpeed, ForceMode2D.Force);//
-            Debug.Log("Suka5");
+        private void HandleRotation()
+        {
+            var target = camera.ScreenToWorldPoint(inputService.MouseValue());
+            Vector2 direction = target - transform.position;
+
+            var q = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, q - 90);
+        }
+
+        private void HandleMovement()
+        {
+            Vector2 mraz = inputService.KeyBoardValue();
+            _rigidbody.AddForce(inputService.KeyBoardValue() * _moveSpeed, ForceMode2D.Force);
         }
 
         public void TakeDamage(int damage, Bullet thisBullet)
         {
-            _health -= damage;
+            health -= damage;
             _bulletPool.PutBullet(thisBullet);
         }
 
         public void Heal(int heal)
         {
-            _health += heal;
+            health += heal;
         }
     }
 }

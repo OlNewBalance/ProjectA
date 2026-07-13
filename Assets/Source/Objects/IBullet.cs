@@ -6,6 +6,8 @@ namespace Source.Objects
     {
         int Damage { get; }
 
-        Rigidbody2D GetRigidbody();
+        void Shoot(Vector2 direction);
+
+        float BulletTimeoutSeconds();
     }
 }

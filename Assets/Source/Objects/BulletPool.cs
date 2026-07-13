@@ -1,3 +1,4 @@
+using System.Collections;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +26,19 @@ namespace Source.Objects
 
             Bullet bullet = _bullets.FirstOrDefault();
             _bullets.Remove(bullet);
-            bullet.enabled = true;
+            bullet.gameObject.SetActive(true);
             return bullet;
+        }
+
+        public IEnumerator ReturnBulletCallback(Bullet bullet, float timeout)
+        {
+            yield return new WaitForSeconds(timeout);
+            this.PutBullet(bullet);
         }
 
         public void PutBullet(Bullet bullet)
         {
-            bullet.enabled = false;
+            bullet.gameObject.SetActive(false);
             _bullets.Add(bullet);
         }
 
@@ -40,7 +47,7 @@ namespace Source.Objects
             for (int i = 0; i < _maxBullets; i++)
             {
                 Bullet bullet = UnityEngine.MonoBehaviour.Instantiate(bulletPrefab);
-                bullet.enabled = false;
+                bullet.gameObject.SetActive(false);
                 _bullets.Add(bullet);
             }
         }
