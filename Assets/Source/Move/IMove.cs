@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Source
+namespace Source.Move
 {
     public interface IMove
     {
-
+        float MoveSpeed { get; }
     }
 }

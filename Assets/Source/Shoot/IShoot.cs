@@ -1,9 +1,8 @@
-using UnityEngine;
 
-namespace Source
+namespace Source.Shoot
 {
     public interface IShoot
     {
-
+        void Shoot();
     }
 }

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Source
+namespace Source.Objects
 {
     public interface IBullet
     {
-
+        int Damage { get; }
     }
 }
