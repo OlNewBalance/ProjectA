@@ -2,7 +2,7 @@
 
 namespace Source.Shoot
 {
-    public class EnemyShoot: IShoot
+    public class EnemyShoot : IShoot
     {
         private Transform _origin;
         
@@ -11,8 +11,14 @@ namespace Source.Shoot
             
         }
         
-        public void Shoot()
+        public void Shoot(Vector2 vector)
         {
+            
+        }
+
+        public void Shoot(System.Numerics.Vector2 vector)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
