@@ -1,7 +1,8 @@
-﻿namespace Source
+﻿using UnityEngine;
+
+namespace Source
 {
-    public class Main
+    public class Main: MonoBehaviour
     {
-    
     }  
 }
