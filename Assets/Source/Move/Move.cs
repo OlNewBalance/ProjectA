@@ -5,9 +5,10 @@ using UnityEngine;
 namespace Source.Move
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Move: MonoBehaviour
+    public class Move: MonoBehaviour, IMove
     {
         [SerializeField] private float speed;
+        [SerializeField] private float maxSpeed;
         private Rigidbody2D _rb;
         
         private void Awake()
@@ -18,6 +19,7 @@ namespace Source.Move
         public void MoveTo(Vector2 value)
         {
             _rb.AddForce(value * speed, ForceMode2D.Force);
+            _rb.linearVelocity = Vector2.ClampMagnitude(_rb.linearVelocity, maxSpeed);
         }
 
         public void RotateTo(Vector2 target)

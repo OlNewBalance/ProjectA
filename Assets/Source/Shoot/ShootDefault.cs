@@ -1,14 +1,15 @@
 ﻿using Source.Objects;
+using Source.Objects.Projectiles.Bullet;
 using UnityEngine;
 
 namespace Source.Shoot
 {
-    public class ShootDefault: MonoBehaviour
+    public class ShootDefault: MonoBehaviour, IShoot
     {
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform bulletOrigin;
+        [SerializeField] private InitiatorType initiator;
         private BulletPool _bulletPool;
-
         private void Awake()
         {
             _bulletPool = new BulletPool();
@@ -23,7 +24,7 @@ namespace Source.Shoot
             bullet.transform.position = bulletOrigin.position;
             bullet.transform.rotation = bulletOrigin.rotation;
 
-            bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position);
+            bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position, initiator);
         }
         
     }

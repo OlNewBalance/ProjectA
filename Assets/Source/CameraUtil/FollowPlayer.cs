@@ -34,7 +34,6 @@ namespace Source.CameraUtil
                 _exited = true;
                 moveTo = other.gameObject.transform;
             }
-            
         }
 
         private void FixedUpdate()

@@ -10,12 +10,14 @@ namespace Source.Pickup
 
         private void Awake()
         {
-            _expValue = G.CurrentCoinExpValue;
+            _expValue =  G.CurrentCoinExpValue;
         }
 
         public void OnPickup()
         {
-            G.CurrentExp += _expValue;
+            G.CurrentExp +=  G.CurrentCoinExpValue;
+            
+            Destroy(gameObject);
         }
     }
 }

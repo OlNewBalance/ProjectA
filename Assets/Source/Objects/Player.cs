@@ -1,37 +1,32 @@
+using Source.Health;
+using Source.Objects.Projectiles.Bullet;
+using Source.Shoot;
 using UnityEngine;
+using IInitiator = Source.Shoot.IInitiator;
 
 namespace Source.Objects
 {
-    
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Move.Move))]
-    [RequireComponent(typeof(Shoot.ShootDefault))]
-    public class Player : MonoBehaviour, Source.Shoot.IShoot, Source.Health.IHealth, Source.Move.IMove
+    [RequireComponent(typeof(ShootDefault))]
+    [RequireComponent(typeof(IHealth))]
+    public class Player : MonoBehaviour, IInitiator
     {
         [SerializeField] private Source.Move.InputService inputService;
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private UnityEngine.Camera camera;
         [SerializeField] private Transform bulletOrigin;
-        [SerializeField]private int health = 100;
         private BulletPool _bulletPool;
-        private Rigidbody2D _rigidbody;
         private Move.Move _move;
-        private Shoot.ShootDefault _shoot;
-
-        public float ShootPower { get; }
-        public float MoveSpeed { get; }
-
-        private float _moveSpeed = 15;
+        private ShootDefault _shoot;
+        private IHealth _health;
 
         private void Awake()
         {
-            
-            health = 100;
             _bulletPool = new BulletPool();
             _bulletPool.Init(bulletPrefab);
-            _rigidbody = GetComponent<Rigidbody2D>();
             _move = GetComponent<Move.Move>();
-            _shoot = GetComponent<Shoot.ShootDefault>();
+            _shoot = GetComponent<ShootDefault>();
 
             inputService.OnShoot += Shoot;
         }
@@ -60,19 +55,13 @@ namespace Source.Objects
 
         private void HandleMovement()
         {
-            Vector2 mraz = inputService.KeyBoardValue();
-            _move.MoveTo(mraz);
+            Vector2 keyBoardValue = inputService.KeyBoardValue();
+            _move.MoveTo(keyBoardValue);
         }
-
-        public void TakeDamage(int damage, Bullet thisBullet)
+        
+        public InitiatorType GetInitiatorType()
         {
-            health -= damage;
-            _bulletPool.PutBullet(thisBullet);
-        }
-
-        public void Heal(int heal)
-        {
-            health += heal;
+            return InitiatorType.Player;
         }
     }
 }

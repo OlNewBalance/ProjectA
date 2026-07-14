@@ -1,7 +1,7 @@
 using System.Collections;
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using Source.Objects.Projectiles.Bullet;
 using UnityEngine;
 
 namespace Source.Objects
@@ -27,6 +27,7 @@ namespace Source.Objects
             Bullet bullet = _bullets.FirstOrDefault();
             _bullets.Remove(bullet);
             bullet.gameObject.SetActive(true);
+            bullet.OnHit += () => PutBullet(bullet);
             return bullet;
         }
 

@@ -1,3 +1,4 @@
+using Source.Shoot;
 using UnityEngine;
 
 namespace Source.Objects
@@ -6,7 +7,7 @@ namespace Source.Objects
     {
         int Damage { get; }
 
-        void Shoot(Vector2 direction);
+        void Shoot(Vector2 direction, InitiatorType initiatorType);
 
         float BulletTimeoutSeconds();
     }

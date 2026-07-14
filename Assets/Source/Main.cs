@@ -13,6 +13,12 @@ namespace Source
         private void Awake()
         {
             _is = GetComponent<InputService>();
+
+            G.CurrentExp = 0;
+            G.CurrentLevel = 1;
+            
+            G.OnExpChanged += i => Debug.Log(i);
+            G.CurrentCoinExpValue = 10;
         }
         
         private void Start()

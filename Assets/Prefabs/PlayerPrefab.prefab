@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8309341358714494052}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2517831468249434855}
   - component: {fileID: 5744867872077976594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,10 +134,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3272822868379471257}
   - component: {fileID: 9059675638613749577}
+  - component: {fileID: 4208805927803352717}
   - component: {fileID: 2680097299145441987}
   - component: {fileID: 8724573627917140698}
   - component: {fileID: 5572091558630212339}
-  m_Layer: 0
+  - component: {fileID: 9174884613926058140}
+  - component: {fileID: 1255690429212019658}
+  - component: {fileID: 2547099922989118857}
+  m_Layer: 3
   m_Name: PlayerPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -220,6 +224,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &4208805927803352717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763160566329401191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13458ba7ea3f4b708a12d12dfefc1e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Health.Health
+  maxHealth: 20
 --- !u!114 &2680097299145441987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +253,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
   camera: {fileID: 0}
   bulletOrigin: {fileID: 8309341358714494052}
-  health: 100
 --- !u!50 &8724573627917140698
 Rigidbody2D:
   serializedVersion: 5
@@ -250,7 +266,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.1
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -262,7 +278,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &5572091558630212339
 BoxCollider2D:
@@ -310,3 +326,44 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9174884613926058140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763160566329401191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39288b23f82e4840b4a60dd376c3eb73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Move.Move
+  speed: 20
+  maxSpeed: 30
+--- !u!114 &1255690429212019658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763160566329401191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d33b2e162f64cf99207530404e685d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Shoot.ShootDefault
+  bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
+  bulletOrigin: {fileID: 8309341358714494052}
+  initiator: 1
+--- !u!114 &2547099922989118857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763160566329401191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4044587c63f44891900cc4c753d12380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Pickup.Picker

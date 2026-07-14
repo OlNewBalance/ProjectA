@@ -1,63 +1,79 @@
 using Source.Shoot;
 using System.Collections;
+using Source.Move;
 using UnityEngine;
 
 namespace Source.Objects.Enemies
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class EnemyCorvette : MonoBehaviour, IEnemy
+    [RequireComponent(typeof(IMove))]
+    [RequireComponent(typeof(IShoot))]
+    public class Enemy : MonoBehaviour, IEnemy, IInitiator
     {
         [SerializeField] private LookRadius _lookRadius;
         [SerializeField] private float _radius = 50;
 
-        private Rigidbody2D _rigidbody;
-        private EnemyShoot _enemyShoot;
+        private IShoot _enemyShoot;
+        private IMove _move;
+        
         private Vector2 _direction;
-        private float _time = 3;
+        private float _changeDirectionCooldown = 3;
+        private float _changeDirection_cur = 0.0f;
+
+        private float _shootCooldown = 2f;
+        private float _shootCooldown_cur = 0.0f;
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            Vector2 _enemyPosition = this.gameObject.transform.position;
+            _enemyShoot = gameObject.GetComponent<IShoot>();
+            _move = gameObject.GetComponent<IMove>();
         }
 
         private void FixedUpdate()
         {
-
+            HandlePlayer();   
+            Move(_direction);
+            DecideToShoot();
         }
 
         public void Init(Vector2 pos)
         {
-            //
         }
 
-        private void Move() // Â ÒÅÎÐÈÈ ÎÒÄÅËÜÍÛÉ ÅÄÈÍÛÉ ÊËÀÑÑ MOVE
+        private void HandlePlayer()
         {
-            // ÇÀÒÅÑÒÈÒÜ
-            //if (_lookRadius.Player() != null)
-            //{
-            //    Attack();
-            //    return;
-            //}
-
-            StartCoroutine(ChangeDirection());
-            _rigidbody.AddForce(_direction.normalized * Source.G.EnemyMoveSpeed, ForceMode2D.Force);
-            _rigidbody.linearVelocity = Vector2.ClampMagnitude(_rigidbody.linearVelocity, Source.G.EnemyMoveMaxSpeed);
+            if (_lookRadius.Player())
+            {
+                _direction = _lookRadius.Player().transform.position;
+                return;
+            }
+            _changeDirection_cur += Time.deltaTime;
+            if (_changeDirection_cur >= _changeDirectionCooldown)
+            {
+                _direction = new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
+                _changeDirection_cur = 0;
+            }
         }
 
-        private void Attack()
+        private void DecideToShoot()
         {
-            Vector2 direction = _lookRadius.Player().transform.position;
-            _rigidbody.AddForce(direction.normalized * Source.G.EnemyMoveSpeed, ForceMode2D.Force);
-            _rigidbody.linearVelocity = Vector2.ClampMagnitude(_rigidbody.linearVelocity, Source.G.EnemyMoveMaxSpeed);
-            _enemyShoot.Shoot(direction);
+            _shootCooldown_cur  += Time.deltaTime;
+            if (_lookRadius.Player() && _shootCooldown_cur >= _shootCooldown)
+            {
+                _enemyShoot.Shoot();
+                _shootCooldown_cur = 0.0f;
+            }
         }
-
-        private IEnumerator ChangeDirection()
+        
+        private void Move(Vector2 direction)
         {
-            yield return new WaitForSeconds(_time);
-            _direction = new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
+            _move.MoveTo(direction);
+            _move.RotateTo(direction);
         }
 
+        public InitiatorType GetInitiatorType()
+        {
+            return InitiatorType.EnemyCorvette;
+        }
     }
 }

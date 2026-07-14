@@ -1,4 +1,4 @@
-﻿namespace Source.Objects.Projectiles.Bullet
+﻿namespace Source.Shoot
 {
     public interface IInitiator
     {
