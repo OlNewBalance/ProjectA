@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5572091558630212339}
   - component: {fileID: 9174884613926058140}
   - component: {fileID: 1255690429212019658}
-  - component: {fileID: 2547099922989118857}
+  - component: {fileID: 4086392509416524773}
   m_Layer: 3
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -355,7 +355,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
   bulletOrigin: {fileID: 8309341358714494052}
   initiator: 1
---- !u!114 &2547099922989118857
+--- !u!114 &4086392509416524773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,4 +366,4 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4044587c63f44891900cc4c753d12380, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Source.Pickup.Picker
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Health.Health

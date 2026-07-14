@@ -8,7 +8,6 @@ namespace Source
     public class Main: MonoBehaviour
     {
         [SerializeField] private Player player;
-        
         private InputService _is;
         private void Awake()
         {
