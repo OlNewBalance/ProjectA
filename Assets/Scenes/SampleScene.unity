@@ -150,6 +150,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &267516170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3763160566329401191, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+  m_PrefabInstance: {fileID: 474227445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &267516176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2680097299145441987, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+  m_PrefabInstance: {fileID: 474227445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267516170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b42c03bd0927e24a8538410cd81ed55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Objects.Player
+--- !u!114 &267516180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267516170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca476b137f446644bb8d35abd6b56c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Health.EnemyDie
 --- !u!1001 &474227445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +194,14 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 2132027021}
+    - target: {fileID: 2680097299145441987, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7639944649174556669, guid: ead5223da8b6d204688b36212ad77359, type: 3}
+    - target: {fileID: 2680097299145441987, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+      propertyPath: inputService
+      value: 
+      objectReference: {fileID: 1258079671}
     - target: {fileID: 3272822868379471257, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.00359
@@ -210,10 +246,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4208805927803352717, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208805927803352717, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+      propertyPath: maxSpeed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174884613926058140, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3763160566329401191, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
+      insertIndex: 8
+      addedObject: {fileID: 267516180}
   m_SourcePrefab: {fileID: 100100000, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
 --- !u!1 &1258079670
 GameObject:
@@ -302,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c5c367be95fd44ba5bc4013b6dd56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  _player: {fileID: 267516176}
   _enemyPrefab: {fileID: 9119975648983595102, guid: e184056c1994da44ebd89741876b3063, type: 3}
   _camera: {fileID: 2132027021}
 --- !u!4 &1689033086
@@ -467,9 +519,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2132027018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6826997d78949ebb00e778d4276b465, type: 3}
+  m_Script: {fileID: 11500000, guid: 11c2488139f7df144b2f2dbdfcc6ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.CameraUtil.FollowPlayer
+  recenterSpeed: 10
+  enterRadius: 5
 --- !u!61 &2132027024
 BoxCollider2D:
   m_ObjectHideFlags: 0
