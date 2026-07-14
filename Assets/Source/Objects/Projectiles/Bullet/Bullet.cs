@@ -8,7 +8,7 @@ namespace Source.Objects.Projectiles.Bullet
     [RequireComponent(typeof(Rigidbody2D))]
     public class Bullet : MonoBehaviour, IBullet
     {
-        [SerializeField] public int damage;
+        public int _damage;
         private Rigidbody2D _rigidbody;
         private InitiatorType _initiator;
         public Action OnHit;
@@ -21,13 +21,12 @@ namespace Source.Objects.Projectiles.Bullet
         private void OnTriggerEnter2D(Collider2D other)
         { 
             
-            
             if(other.gameObject.TryGetComponent<IHealth>(out IHealth iHealth))
             {
                 if (other.gameObject.TryGetComponent<IInitiator>(out IInitiator initiator) && initiator.GetInitiatorType() != _initiator)
                 {
                     Debug.Log(_initiator + " hit " + initiator.GetInitiatorType());
-                    iHealth.TakeDamage(damage);
+                    iHealth.TakeDamage(_damage);
                     OnHit.Invoke();
                 }
             }
@@ -45,7 +44,7 @@ namespace Source.Objects.Projectiles.Bullet
 
         public void SetDamage(int damage)
         {
-            damage = Mathf.Clamp(damage, 0, int.MaxValue);
+            _damage = Mathf.Clamp(damage, 0, int.MaxValue);
         }
 
         public void SetInitiator(InitiatorType initiator)

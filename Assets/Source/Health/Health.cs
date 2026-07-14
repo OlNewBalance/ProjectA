@@ -7,18 +7,25 @@ namespace Source.Health
     public class Health: MonoBehaviour, IHealth
     {
         [SerializeField] private int maxHealth;
+        public int MaxHealthAmount => maxHealth;
+        public Action<int> OnHealthChanged { get; set; }
         private int _health;
+        public int HealthAmount => _health;
         private IDie _dieHandler;
+
 
         private void Awake()
         {
             _health = maxHealth;
             _dieHandler = GetComponent<IDie>();
+            
+            OnHealthChanged?.Invoke(_health);
         }
-        
+
         public void TakeDamage(int damage)
         {
             _health -= damage;
+            OnHealthChanged?.Invoke(Math.Clamp(_health, 0, maxHealth));
             if (_health <= 0)
             {
                 Die();
@@ -33,6 +40,7 @@ namespace Source.Health
                 return;
             }
             _health += heal;
+            OnHealthChanged?.Invoke(_health);
         }
 
         public void Die()

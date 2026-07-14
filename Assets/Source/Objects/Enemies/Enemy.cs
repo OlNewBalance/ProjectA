@@ -18,6 +18,7 @@ namespace Source.Objects.Enemies
         private IMove _move;
         
         private Vector2 _direction;
+        private Vector2 _lookAt;
         private float _changeDirectionCooldown = 3;
         private float _changeDirection_cur = 0.0f;
 
@@ -42,7 +43,7 @@ namespace Source.Objects.Enemies
         private void FixedUpdate()
         {
             HandlePlayer();   
-            Move(_direction);
+            Move(_direction, _lookAt);
             DecideToShoot();
         }
 
@@ -54,7 +55,8 @@ namespace Source.Objects.Enemies
         {
             if (lookRadius.Player())
             {
-                _direction = lookRadius.Player().transform.position;
+                _direction = lookRadius.Player().transform.position - transform.position;
+                _lookAt = lookRadius.Player().transform.position;
                 return;
             }
             _changeDirection_cur += Time.deltaTime;
@@ -75,10 +77,10 @@ namespace Source.Objects.Enemies
             }
         }
         
-        private void Move(Vector2 direction)
+        private void Move(Vector2 direction, Vector2 lookAt)
         {
             _move.MoveTo(direction);
-            _move.RotateTo(direction);
+            _move.RotateTo(_lookAt);
         }
 
         public InitiatorType GetInitiatorType()

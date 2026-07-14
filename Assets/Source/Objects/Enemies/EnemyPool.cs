@@ -1,14 +1,16 @@
+using System;
 using Source.Objects.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Source.Health;
 using UnityEngine;
 
 public class EnemyPool
 {
     private int _maxEnemies = 25;
     private List<Enemy> _enemies = new List<Enemy>();
-
+    public Action<Enemy> cleanupFunc;
     public Enemy GetEnemy(Enemy enemyPrefab)
     {
         if (_enemies.Count == 0)
@@ -19,6 +21,9 @@ public class EnemyPool
         Enemy enemy = _enemies.FirstOrDefault();
         _enemies.Remove(enemy);
         enemy.gameObject.SetActive(true);
+        
+        cleanupFunc?.Invoke(enemy);
+        
         return enemy;
     }
 

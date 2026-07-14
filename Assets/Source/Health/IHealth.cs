@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Source.Health
@@ -9,5 +10,9 @@ namespace Source.Health
         void TakeDamage(int damage);
         void Heal(int heal);
         void Die();
+        
+        int HealthAmount { get; }
+        int MaxHealthAmount { get; }
+        Action<int> OnHealthChanged { get; set; }
     }
 }

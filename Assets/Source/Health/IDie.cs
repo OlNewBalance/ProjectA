@@ -1,4 +1,6 @@
-﻿namespace Source.Health
+﻿using JetBrains.Annotations;
+
+namespace Source.Health
 {
     public interface IDie
     {

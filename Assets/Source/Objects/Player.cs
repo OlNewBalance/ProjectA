@@ -37,7 +37,6 @@ namespace Source.Objects
         private void FixedUpdate()
         {
             _position = transform.position;
-
             Move();
         }
 

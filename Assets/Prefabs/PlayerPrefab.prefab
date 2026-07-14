@@ -134,7 +134,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3272822868379471257}
   - component: {fileID: 9059675638613749577}
-  - component: {fileID: 4208805927803352717}
+  - component: {fileID: 9127861346025750964}
+  - component: {fileID: 1778684684604593159}
   - component: {fileID: 2680097299145441987}
   - component: {fileID: 8724573627917140698}
   - component: {fileID: 5572091558630212339}
@@ -224,7 +225,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &4208805927803352717
+--- !u!114 &9127861346025750964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,10 +234,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 3763160566329401191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13458ba7ea3f4b708a12d12dfefc1e61, type: 3}
+  m_Script: {fileID: 11500000, guid: 0aaa2987cf6411d46a26eed0358a6893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Health.Health
-  maxHealth: 20
+  maxHealth: 100
+--- !u!114 &1778684684604593159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763160566329401191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810c879091cd4c8e9e3722fbac667510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Health.PlayerDie
 --- !u!114 &2680097299145441987
 MonoBehaviour:
   m_ObjectHideFlags: 0

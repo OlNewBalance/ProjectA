@@ -24,11 +24,11 @@ namespace Sourceг
             get => _currentExp;
             set {
                 _currentExp = value;
-                if (LevelMap[_currentLevel] < _currentExp && LevelMap.ContainsKey(_currentLevel + 1))
+                if (LevelMap.ContainsKey(_currentLevel + 1) && LevelMap[_currentLevel + 1] < _currentExp)
                 {
                     ChangeLevel(_currentLevel + 1);
                 }
-                OnExpChanged?.Invoke(_currentExp);
+                OnExpChanged?.Invoke(value);
             }
         }
         public static Action<int> OnExpChanged;
@@ -40,15 +40,15 @@ namespace Sourceг
         
         //Enemies
         public static int EnemyHp { get; set; }
-        private static readonly Dictionary<int, int> _enemyHpByLevel = new Dictionary<int, int>();
+        private static  Dictionary<int, int> _enemyHpByLevel = new Dictionary<int, int>();
         public static int EnemyMoveSpeed { get; set; }
-        private static readonly Dictionary<int, int> _enemyMoveSpeedByLevel =  new Dictionary<int, int>();
+        private static  Dictionary<int, int> _enemyMoveSpeedByLevel =  new Dictionary<int, int>();
         public static int EnemyMoveMaxSpeed { get; set; }
-        private static readonly Dictionary<int, int> _enemyMoveMaxSpeedByLevel = new Dictionary<int, int>();
+        private static  Dictionary<int, int> _enemyMoveMaxSpeedByLevel = new Dictionary<int, int>();
         public static int EnemyCorvetteDamage { get; set; }
-        private static readonly Dictionary<int, int> _enemyCorvetteDamageByLevel = new Dictionary<int, int>();
+        private static  Dictionary<int, int> _enemyCorvetteDamageByLevel = new Dictionary<int, int>();
         public static int CurrentCoinExpValue { get; set; }
-        private static readonly Dictionary<int, int> _currentCoinExpByLevel = new Dictionary<int, int>();
+        private static  Dictionary<int, int> _currentCoinExpByLevel = new Dictionary<int, int>();
 
 
         public static GInit DefaultInit = new GInit(
@@ -57,7 +57,7 @@ namespace Sourceг
                 levelMap: new Dictionary<int, int>()
                 {
                     {1, 0},
-                    {2, 100},
+                    {2, 10},
                     {3, 1000}
                 },
                 playerDamageByLevel: new Dictionary<int, int>()
@@ -68,15 +68,21 @@ namespace Sourceг
                 },
                 enemyCorvetteHpByLevel:  new Dictionary<int, int>()
                 {
-                    {1, 1},
-                    {2, 1},
-                    {3, 1}
+                    {1, 2},
+                    {2, 2},
+                    {3, 2}
                 },
                 enemyMoveSpeedByLevel: new Dictionary<int, int>()
                 {
+                    {1, 10},
+                    {2, 15},
+                    {3, 15}
+                },
+                enemyMoveMaxSpeedByLevel:new Dictionary<int, int>()
+                {
                     {1, 20},
-                    {2, 13},
-                    {3, 4}
+                    {2, 25},
+                    {3, 25}
                 },
                 enemyCorvetteDamageByLevel:  new Dictionary<int, int>()
                 {
@@ -94,14 +100,21 @@ namespace Sourceг
 
         public static void InitG(GInit gInit)
         {
+            LevelMap = gInit.LevelMap;
             CurrentLevel = gInit.CurrentLevel;
             CurrentExp = gInit.CurrentExp;
-            LevelMap = gInit.LevelMap;
+            _playerDamageByLevel = gInit.PlayerDamageByLevel;
+            _enemyCorvetteDamageByLevel = gInit.EnemyCorvetteDamageByLevel;
+            _enemyHpByLevel = gInit.EnemyCorvetteHpByLevel;
+            _enemyMoveSpeedByLevel = gInit.EnemyMoveSpeedByLevel;
+            _enemyMoveMaxSpeedByLevel = gInit.EnemyMoveMaxSpeedByLevel;
+            _currentCoinExpByLevel = gInit.CurrentCoinExpByLevel;
+            ChangeLevel(CurrentLevel);
         }
 
         private static void ChangeLevel(int level)
         {
-            _currentLevel = level;
+            CurrentLevel = level;
             PlayerDamage = _playerDamageByLevel[_currentLevel];
             EnemyHp = _enemyHpByLevel[_currentLevel];
             EnemyMoveSpeed = _enemyMoveSpeedByLevel[_currentLevel];
@@ -121,8 +134,8 @@ namespace Sourceг
             Dictionary<int, int> enemyCorvetteHpByLevel,
             Dictionary<int, int> enemyMoveSpeedByLevel,
             Dictionary<int, int> enemyCorvetteDamageByLevel,
-            Dictionary<int, int> currentCoinExpByLevel
-            )
+            Dictionary<int, int> currentCoinExpByLevel,
+            Dictionary<int, int> enemyMoveMaxSpeedByLevel)
         {
             CurrentLevel = level;
             CurrentExp = exp;
@@ -132,12 +145,15 @@ namespace Sourceг
             EnemyMoveSpeedByLevel = enemyMoveSpeedByLevel;
             EnemyCorvetteDamageByLevel = enemyCorvetteDamageByLevel;
             CurrentCoinExpByLevel = currentCoinExpByLevel;
+            EnemyMoveMaxSpeedByLevel = enemyMoveMaxSpeedByLevel;
         }
 
         public readonly int CurrentLevel;
         public readonly int CurrentExp;
         public readonly Dictionary<int, int> LevelMap;
         public Dictionary<int, int> PlayerDamageByLevel { get; set; }
+        public Dictionary<int, int> EnemyMoveMaxSpeedByLevel { get; set; }
+
         public Dictionary<int, int> EnemyCorvetteHpByLevel;
         public Dictionary<int, int> EnemyMoveSpeedByLevel;
         public Dictionary<int, int> EnemyCorvetteDamageByLevel;
