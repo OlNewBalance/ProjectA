@@ -67,6 +67,7 @@ namespace Source.Objects
         {
             return InitiatorType.Player;
         }
+
         public ref readonly Vector2 PlayerPosition()
         {
              return ref _position;
