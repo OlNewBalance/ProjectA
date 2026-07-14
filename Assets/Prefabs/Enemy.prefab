@@ -151,11 +151,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 202196202669001449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39288b23f82e4840b4a60dd376c3eb73, type: 3}
+  m_Script: {fileID: 11500000, guid: ea1b1eb3fec10b04897dd9225426fe1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Move.Move
-  speed: 1
-  maxSpeed: 10
+  speed: 20
+  maxSpeed: 35
 --- !u!114 &100578947090788286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d33b2e162f64cf99207530404e685d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Shoot.ShootDefault
-  bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
+  bulletPrefab: {fileID: 7639944649174556669, guid: ead5223da8b6d204688b36212ad77359, type: 3}
   bulletOrigin: {fileID: 6071582157555137398}
   initiator: 2
 --- !u!58 &7734890041738879298
@@ -216,10 +216,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 202196202669001449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13458ba7ea3f4b708a12d12dfefc1e61, type: 3}
+  m_Script: {fileID: 11500000, guid: ac97a7529821a09409f6eb49f5a91183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Health.Health
-  maxHealth: 2
+  maxHealth: 100
 --- !u!114 &4507417855265178055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 202196202669001449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3a4b7f128e48f09f180c2a49194fe3, type: 3}
+  m_Script: {fileID: 11500000, guid: aca476b137f446644bb8d35abd6b56c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Health.EnemyDie
 --- !u!1 &3018485301062196670

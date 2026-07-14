@@ -18,6 +18,8 @@ namespace Source.Objects
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private UnityEngine.Camera camera;
         [SerializeField] private Transform bulletOrigin;
+
+        private Vector2 _position;
         private BulletPool _bulletPool;
         private IMove _move;
         private IShoot _shoot;
@@ -34,6 +36,8 @@ namespace Source.Objects
 
         private void FixedUpdate()
         {
+            _position = transform.position;
+
             Move();
         }
 
@@ -63,6 +67,11 @@ namespace Source.Objects
         public InitiatorType GetInitiatorType()
         {
             return InitiatorType.Player;
+        }
+
+        public ref readonly Vector2 PlayerPosition()
+        {
+             return ref _position;
         }
     }
 }
