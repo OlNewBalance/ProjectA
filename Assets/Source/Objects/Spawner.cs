@@ -1,0 +1,41 @@
+using Source.Objects;
+using Source.Objects.Enemies;
+using System.Collections;
+using UnityEngine;
+
+public class Spawner : MonoBehaviour
+{
+    [SerializeField] private Player _player;
+    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Camera _camera;
+
+    private EnemyPool _pool;
+    private Vector2 spawnPoint;
+    private int _spawnCoolDown = 8;
+
+    private void Awake()
+    {
+        _pool = new EnemyPool();
+
+        StartCoroutine(SpawnCoroutine(spawnPoint));
+    }
+
+    private IEnumerator SpawnCoroutine(Vector2 spawnPoint)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_spawnCoolDown);
+
+            //Vector2 maxScreenAngle = _camera.ScreenToViewportPoint(new Vector3(1, 1, 0));
+            //Vector2 minScreenAngle = _camera.ScreenToViewportPoint(new Vector3(0, 0, 0));
+            //spawnPoint = new Vector2(Random.Range(minScreenAngle.x, maxScreenAngle.x), Random.Range(minScreenAngle.y, maxScreenAngle.y));
+            spawnPoint = new Vector2(_player.PlayerPosition().x + Random.Range(-300, 300), _player.PlayerPosition().y + Random.Range(-300, 300));
+
+            Enemy newEnemy = _pool.GetEnemy(_enemyPrefab);
+            newEnemy.transform.position = spawnPoint;
+            newEnemy.transform.rotation = new Quaternion(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1), 0);
+            
+            spawnPoint = Vector2.zero;
+        }
+    }
+}
