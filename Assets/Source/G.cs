@@ -7,7 +7,9 @@ namespace Source
         public static GInit DefaultInit =  new GInit(
             level: 1, 
             exp: 0);
-        
+
+        public static int CurrentCoinExpValue { get; set; }
+
         public static void InitG(GInit gInit)
         {
             CurrentLevel = gInit.CurrentLevel;
