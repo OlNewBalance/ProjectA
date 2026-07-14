@@ -8,13 +8,12 @@ namespace Source.Objects.Enemies
     public class EnemyCorvette : MonoBehaviour, IEnemy
     {
         [SerializeField] private LookRadius _lookRadius;
-        [SerializeField] private float _time = 3;
-        [SerializeField] private float _speed = 15;
         [SerializeField] private float _radius = 50;
 
         private Rigidbody2D _rigidbody;
         private EnemyShoot _enemyShoot;
         private Vector2 _direction;
+        private float _time = 3;
 
         private void Awake()
         {
@@ -24,7 +23,7 @@ namespace Source.Objects.Enemies
 
         private void FixedUpdate()
         {
-            Move();
+
         }
 
         public void Init(Vector2 pos)
@@ -32,7 +31,7 @@ namespace Source.Objects.Enemies
             //
         }
 
-        private void Move()
+        private void Move() // В ТЕОРИИ ОТДЕЛЬНЫЙ ЕДИНЫЙ КЛАСС MOVE
         {
             // ЗАТЕСТИТЬ
             //if (_lookRadius.Player() != null)
@@ -42,16 +41,15 @@ namespace Source.Objects.Enemies
             //}
 
             StartCoroutine(ChangeDirection());
-            _rigidbody.AddForce(_direction.normalized * _speed, ForceMode2D.Force);
+            _rigidbody.AddForce(_direction.normalized * Source.G.EnemyMoveSpeed, ForceMode2D.Force);
+            _rigidbody.linearVelocity = Vector2.ClampMagnitude(_rigidbody.linearVelocity, Source.G.EnemyMoveMaxSpeed);
         }
 
         private void Attack()
         {
             Vector2 direction = _lookRadius.Player().transform.position;
-            _rigidbody.AddForce(direction.normalized * _speed, ForceMode2D.Force);
-            //_rigidbody.linearVelocity 
-            // Добавить ограничение скорости (Velocity)
-            // Добавить поворот врага в сторону игрока
+            _rigidbody.AddForce(direction.normalized * Source.G.EnemyMoveSpeed, ForceMode2D.Force);
+            _rigidbody.linearVelocity = Vector2.ClampMagnitude(_rigidbody.linearVelocity, Source.G.EnemyMoveMaxSpeed);
             _enemyShoot.Shoot(direction);
         }
 
@@ -60,5 +58,6 @@ namespace Source.Objects.Enemies
             yield return new WaitForSeconds(_time);
             _direction = new Vector2(Random.Range(-100, 100), Random.Range(-100, 100));
         }
+
     }
 }

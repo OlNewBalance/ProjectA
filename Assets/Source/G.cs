@@ -47,6 +47,7 @@ namespace Source
 
         public static int EnemyHP { get; set; }
         public static int EnemyMoveSpeed { get; set; }
+        public static int EnemyMoveMaxSpeed { get; set; }
         public static int EnemyCorvetteDamage { get; set; }
     }
 
