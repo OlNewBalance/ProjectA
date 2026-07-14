@@ -20,9 +20,11 @@ namespace Source.Objects
         private Move.Move _move;
         private ShootDefault _shoot;
         private IHealth _health;
+        public Rigidbody2D _rigidbody { get; private set; }
 
         private void Awake()
         {
+            _rigidbody = GetComponent<Rigidbody2D>();
             _bulletPool = new BulletPool();
             _bulletPool.Init(bulletPrefab);
             _move = GetComponent<Move.Move>();

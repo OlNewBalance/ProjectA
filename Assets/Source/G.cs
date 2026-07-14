@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Source
 {
     public static class G
     {
-        public static GInit DefaultInit =  new GInit(
-            level: 1, 
+        public static GInit DefaultInit = new GInit(
+            level: 1,
             exp: 0);
 
         public static int CurrentCoinExpValue { get; set; }
@@ -23,9 +24,9 @@ namespace Source
         public static int CurrentLevel
         {
             get => _currentLevel;
-            set { 
-                _currentLevel = value; 
-                OnLevelChanged?.Invoke(_currentLevel); 
+            set {
+                _currentLevel = value;
+                OnLevelChanged?.Invoke(_currentLevel);
             }
         }
 
@@ -44,6 +45,7 @@ namespace Source
         }
 
         public static int PlayerDamage { get; set; }
+        public static int FastTravelLVL { get; set; }
 
         //Enemies
 
@@ -51,6 +53,11 @@ namespace Source
         public static int EnemyMoveSpeed { get; set; }
         public static int EnemyMoveMaxSpeed { get; set; }
         public static int EnemyCorvetteDamage { get; set; }
+
+        //FastTravel
+
+        public static Dictionary<int, AlterHole> GloryHoles { get; set; }
+        public static float AttractionForce { get; set; }
     }
 
     public struct GInit
