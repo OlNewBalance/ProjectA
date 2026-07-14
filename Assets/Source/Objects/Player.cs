@@ -4,6 +4,8 @@ namespace Source.Objects
 {
     
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Move.Move))]
+    [RequireComponent(typeof(Shoot.ShootDefault))]
     public class Player : MonoBehaviour, Source.Shoot.IShoot, Source.Health.IHealth, Source.Move.IMove
     {
         [SerializeField] private Source.Move.InputService inputService;
@@ -13,12 +15,13 @@ namespace Source.Objects
         [SerializeField]private int health = 100;
         private BulletPool _bulletPool;
         private Rigidbody2D _rigidbody;
+        private Move.Move _move;
+        private Shoot.ShootDefault _shoot;
 
         public float ShootPower { get; }
         public float MoveSpeed { get; }
 
         private float _moveSpeed = 15;
-        private float _rotationSpeed = 5;
 
         private void Awake()
         {
@@ -27,6 +30,10 @@ namespace Source.Objects
             _bulletPool = new BulletPool();
             _bulletPool.Init(bulletPrefab);
             _rigidbody = GetComponent<Rigidbody2D>();
+            _move = GetComponent<Move.Move>();
+            _shoot = GetComponent<Shoot.ShootDefault>();
+
+            inputService.OnShoot += Shoot;
         }
 
         private void FixedUpdate()
@@ -36,14 +43,7 @@ namespace Source.Objects
 
         public void Shoot()
         {
-            Bullet bullet = _bulletPool.GetBullet();
-            StartCoroutine(_bulletPool.ReturnBulletCallback(bullet, bullet.BulletTimeoutSeconds()));
-            
-            bullet.transform.position = bulletOrigin.position;
-            bullet.transform.rotation = bulletOrigin.rotation;
-
-            bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position);
-            
+            _shoot.Shoot();
         }
 
         public void Move()
@@ -55,16 +55,13 @@ namespace Source.Objects
         private void HandleRotation()
         {
             var target = camera.ScreenToWorldPoint(inputService.MouseValue());
-            Vector2 direction = target - transform.position;
-
-            var q = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, q - 90);
+           _move.RotateTo(target);
         }
 
         private void HandleMovement()
         {
             Vector2 mraz = inputService.KeyBoardValue();
-            _rigidbody.AddForce(inputService.KeyBoardValue() * _moveSpeed, ForceMode2D.Force);
+            _move.MoveTo(mraz);
         }
 
         public void TakeDamage(int damage, Bullet thisBullet)
