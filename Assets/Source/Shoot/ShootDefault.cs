@@ -16,15 +16,19 @@ namespace Source.Shoot
             _bulletPool.Init(bulletPrefab);
         }
 
-        public void Shoot()
+        public void Shoot(int damage)
         {
             Bullet bullet = _bulletPool.GetBullet();
+            
+            bullet.SetDamage(damage);
+            bullet.SetInitiator(initiator);
+            
             StartCoroutine(_bulletPool.ReturnBulletCallback(bullet, bullet.BulletTimeoutSeconds()));
             
             bullet.transform.position = bulletOrigin.position;
             bullet.transform.rotation = bulletOrigin.rotation;
 
-            bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position, initiator);
+            bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position);
         }
         
     }

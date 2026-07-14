@@ -8,24 +8,10 @@ namespace Source.Objects.Projectiles.Bullet
     [RequireComponent(typeof(Rigidbody2D))]
     public class Bullet : MonoBehaviour, IBullet
     {
+        [SerializeField] public int damage;
         private Rigidbody2D _rigidbody;
         private InitiatorType _initiator;
         public Action OnHit;
-        public int Damage
-        {
-            get
-            {
-                switch (_initiator)
-                {
-                    case(InitiatorType.EnemyCorvette):
-                        return 1;
-                    case(InitiatorType.Player):
-                        return 1;
-                    default:
-                        return 0;
-                }  
-            }
-        }
 
         private void Awake()
         {
@@ -41,21 +27,30 @@ namespace Source.Objects.Projectiles.Bullet
                 if (other.gameObject.TryGetComponent<IInitiator>(out IInitiator initiator) && initiator.GetInitiatorType() != _initiator)
                 {
                     Debug.Log(_initiator + " hit " + initiator.GetInitiatorType());
-                    iHealth.TakeDamage(Damage);
+                    iHealth.TakeDamage(damage);
                     OnHit.Invoke();
                 }
             }
         }
 
-        public void Shoot(Vector2 direction, InitiatorType initiator)
+        public void Shoot(Vector2 direction)
         {
-            _initiator = initiator;
             _rigidbody.AddForce(direction.normalized * 250f,  ForceMode2D.Impulse);
         }
 
         public float BulletTimeoutSeconds()
         {
             return 10f;
+        }
+
+        public void SetDamage(int damage)
+        {
+            damage = Mathf.Clamp(damage, 0, int.MaxValue);
+        }
+
+        public void SetInitiator(InitiatorType initiator)
+        {
+            _initiator = initiator;
         }
     }
 }

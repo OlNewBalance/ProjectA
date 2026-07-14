@@ -15,7 +15,7 @@ namespace Source.Health
             _health = maxHealth;
             _dieHandler = GetComponent<IDie>();
         }
-
+        
         public void TakeDamage(int damage)
         {
             _health -= damage;
@@ -38,6 +38,16 @@ namespace Source.Health
         public void Die()
         {
             _dieHandler.Die();
+        }
+
+        public void SetMaxHealth(int maxHealth)
+        {
+            this.maxHealth = maxHealth;
+        }
+
+        public void SetHealth(int health)
+        {
+            _health = health;
         }
     }
 }

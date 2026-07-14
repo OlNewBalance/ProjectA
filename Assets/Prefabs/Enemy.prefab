@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcd22bd09375b846940974e03b17ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Objects.Enemies.Enemy
-  _lookRadius: {fileID: 3829773195774282375}
-  _radius: 50
+  lookRadius: {fileID: 3829773195774282375}
+  radius: 50
 --- !u!114 &7849583423806144061
 MonoBehaviour:
   m_ObjectHideFlags: 0

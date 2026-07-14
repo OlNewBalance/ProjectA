@@ -1,6 +1,8 @@
 using Source.Health;
+using Source.Move;
 using Source.Objects.Projectiles.Bullet;
 using Source.Shoot;
+using Sourceг;
 using UnityEngine;
 using IInitiator = Source.Shoot.IInitiator;
 
@@ -17,17 +19,16 @@ namespace Source.Objects
         [SerializeField] private UnityEngine.Camera camera;
         [SerializeField] private Transform bulletOrigin;
         private BulletPool _bulletPool;
-        private Move.Move _move;
-        private ShootDefault _shoot;
+        private IMove _move;
+        private IShoot _shoot;
         private IHealth _health;
 
         private void Awake()
         {
             _bulletPool = new BulletPool();
             _bulletPool.Init(bulletPrefab);
-            _move = GetComponent<Move.Move>();
-            _shoot = GetComponent<ShootDefault>();
-
+            _move = GetComponent<IMove>();
+            _shoot = GetComponent<IShoot>();
             inputService.OnShoot += Shoot;
         }
 
@@ -38,7 +39,7 @@ namespace Source.Objects
 
         public void Shoot()
         {
-            _shoot.Shoot();
+            _shoot.Shoot(G.PlayerDamage);
         }
 
         public void Move()

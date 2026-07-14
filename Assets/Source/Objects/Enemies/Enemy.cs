@@ -1,7 +1,8 @@
 using Source.Shoot;
-using System.Collections;
 using Source.Move;
+using Sourceг;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Source.Objects.Enemies
 {
@@ -10,8 +11,8 @@ namespace Source.Objects.Enemies
     [RequireComponent(typeof(IShoot))]
     public class Enemy : MonoBehaviour, IEnemy, IInitiator
     {
-        [SerializeField] private LookRadius _lookRadius;
-        [SerializeField] private float _radius = 50;
+        [SerializeField] private LookRadius lookRadius;
+        [SerializeField] private float radius = 50;
 
         private IShoot _enemyShoot;
         private IMove _move;
@@ -22,11 +23,20 @@ namespace Source.Objects.Enemies
 
         private float _shootCooldown = 2f;
         private float _shootCooldown_cur = 0.0f;
+        private int _damage;
 
         private void Awake()
         {
             _enemyShoot = gameObject.GetComponent<IShoot>();
             _move = gameObject.GetComponent<IMove>();
+        }
+
+        private void Start()
+        {
+            _damage = G.EnemyCorvetteDamage;
+            
+            _move.SetMaxSpeed(G.EnemyMoveMaxSpeed);
+            _move.SetSpeed(G.EnemyMoveSpeed);
         }
 
         private void FixedUpdate()
@@ -42,9 +52,9 @@ namespace Source.Objects.Enemies
 
         private void HandlePlayer()
         {
-            if (_lookRadius.Player())
+            if (lookRadius.Player())
             {
-                _direction = _lookRadius.Player().transform.position;
+                _direction = lookRadius.Player().transform.position;
                 return;
             }
             _changeDirection_cur += Time.deltaTime;
@@ -58,9 +68,9 @@ namespace Source.Objects.Enemies
         private void DecideToShoot()
         {
             _shootCooldown_cur  += Time.deltaTime;
-            if (_lookRadius.Player() && _shootCooldown_cur >= _shootCooldown)
+            if (lookRadius.Player() && _shootCooldown_cur >= _shootCooldown)
             {
-                _enemyShoot.Shoot();
+                _enemyShoot.Shoot(_damage);
                 _shootCooldown_cur = 0.0f;
             }
         }

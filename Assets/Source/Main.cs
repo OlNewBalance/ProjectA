@@ -1,5 +1,6 @@
 ﻿using Source.Move;
 using Source.Objects;
+using Sourceг;
 using UnityEngine;
 
 namespace Source
@@ -11,13 +12,8 @@ namespace Source
         private InputService _is;
         private void Awake()
         {
+            G.InitG(G.DefaultInit);
             _is = GetComponent<InputService>();
-
-            G.CurrentExp = 0;
-            G.CurrentLevel = 1;
-            
-            G.OnExpChanged += i => Debug.Log(i);
-            G.CurrentCoinExpValue = 10;
         }
         
         private void Start()

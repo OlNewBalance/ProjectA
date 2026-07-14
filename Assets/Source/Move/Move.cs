@@ -27,6 +27,16 @@ namespace Source.Move
             Vector2 direction = target - new Vector2(transform.position.x,  transform.position.y);
 
             var q = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, q - 90);        }
+            transform.rotation = Quaternion.Euler(0, 0, q - 90);        
+        }
+
+        public void SetSpeed(float speed)
+        {
+            this.speed = speed;
+        } 
+        public void SetMaxSpeed(float value)
+        {
+            maxSpeed = value;
+        }
     }
 }
