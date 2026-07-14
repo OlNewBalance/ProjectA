@@ -16,6 +16,7 @@ namespace Source
             CurrentExp = gInit.CurrentExp;
         }
 
+        // Player
         private static int _currentLevel;
         public static Action<int> OnLevelChanged;
 
@@ -27,6 +28,8 @@ namespace Source
                 OnLevelChanged?.Invoke(_currentLevel); 
             }
         }
+
+
         private static int _currentExp;
 
         public static Action<int> OnExpChanged;
@@ -39,6 +42,15 @@ namespace Source
                 OnExpChanged?.Invoke(_currentExp);
             }
         }
+
+        public static int PlayerDamage { get; set; }
+
+        //Enemies
+
+        public static int EnemyHP { get; set; }
+        public static int EnemyMoveSpeed { get; set; }
+        public static int EnemyMoveMaxSpeed { get; set; }
+        public static int EnemyCorvetteDamage { get; set; }
     }
 
     public struct GInit

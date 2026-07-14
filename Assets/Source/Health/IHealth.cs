@@ -6,5 +6,6 @@ namespace Source.Health
     {
         void TakeDamage(int damage, Source.Objects.Bullet bullet);
         void Heal(int heal);
+        void Die();
     }
 }

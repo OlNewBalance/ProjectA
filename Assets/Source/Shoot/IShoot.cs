@@ -1,9 +1,9 @@
+using UnityEngine;
 
 namespace Source.Shoot
 {
     public interface IShoot
     {
-        float ShootPower { get; }
-        void Shoot();
+        void Shoot(Vector2 vector);
     }
 }
