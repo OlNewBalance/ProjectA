@@ -1,25 +1,37 @@
 using Source.Objects;
+using System.Collections;
+using Unity.VectorGraphics;
+using UnityEditor.Build.Content;
+using UnityEditor.Build.Profile;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AlterHole : MonoBehaviour
 {
+    private Vector2 _transform;
+    private float _attractionTime = 3;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Suka1");
         if (collision.TryGetComponent<Player>(out Player player))
         {
-            Debug.Log("Suka2");
+            Attraction(player);
+
             KickOut(player);
-            Debug.Log("Suka3");
         }    
     }
 
     private void KickOut(Player player)
     {
-        Debug.Log("Suka4");
-        Vector2 kickOutPoint = new Vector2(Random.Range(-3, 3), Random.Range(-3, 3));
-        Debug.Log("Suka5");
+        Vector2 kickOutPoint = new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.x + Random.Range(-20, 20));
         player._rigidbody.AddForce(kickOutPoint * Source.G.AttractionForce, ForceMode2D.Impulse);
-        Debug.Log("Suka6");
+    }
+
+    private IEnumerator Attraction(Player player)
+    {
+        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        player._rigidbody.AddForce((_transform - playerPos) * Source.G.AttractionForce, ForceMode2D.Force);
+        yield return new WaitForSeconds(_attractionTime);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Source.Health
 {
-    public class EnemyDie: MonoBehaviour, IDie
+    public class Die: MonoBehaviour, IDie
     {
-        public void Die()
+        public void Dying()
         {
             Destroy(gameObject);
         }

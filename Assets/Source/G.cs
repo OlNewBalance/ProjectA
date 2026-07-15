@@ -58,6 +58,10 @@ namespace Source
 
         public static Dictionary<int, AlterHole> GloryHoles { get; set; }
         public static float AttractionForce { get; set; }
+        public static int EarthSceneIndex { get; set;}
+        public static int MoonSceneIndex { get; set; }
+        public static int MarsSceneIndex { get; set; }
+
     }
 
     public struct GInit

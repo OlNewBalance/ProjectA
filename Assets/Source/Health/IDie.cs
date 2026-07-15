@@ -2,6 +2,6 @@
 {
     public interface IDie
     {
-        void Die();
+        void Dying();
     }
 }

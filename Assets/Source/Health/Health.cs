@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Source.Health
 {
-    [RequireComponent(typeof(IDie))]
+    //[RequireComponent(typeof(IDie))]
     public class Health: MonoBehaviour, IHealth
     {
         [SerializeField] private int maxHealth;
@@ -37,7 +37,7 @@ namespace Source.Health
 
         public void Die()
         {
-            _dieHandler.Die();
+            _dieHandler.Dying();
         }
     }
 }
