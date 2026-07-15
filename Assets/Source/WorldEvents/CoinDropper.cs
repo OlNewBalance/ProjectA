@@ -1,7 +1,6 @@
 ﻿using Source.Pickup;
 using Sourceг;
 using UnityEngine;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Source.WorldEvents
 {
