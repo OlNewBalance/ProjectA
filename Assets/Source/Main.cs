@@ -12,7 +12,6 @@ namespace Source
     [RequireComponent(typeof(AvailableArea))]
     public class Main: MonoBehaviour
     {
-        [SerializeField] private Player _player;
         [SerializeField] private PlanetOrbite _planetOrbite;
 
         //[SerializeField] private AlterHole[] alterHoles;
@@ -95,7 +94,7 @@ namespace Source
 
         private void InitUI()
         {
-            _is.Init(_player);
+            _is.InitPlayer(_player);
             _availableArea.Init(ref _playerPosition, ref _spaceObjectPosition);
             _levelUI = Instantiate(_levelHandler);
         }

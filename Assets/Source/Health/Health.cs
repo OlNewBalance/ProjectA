@@ -45,7 +45,7 @@ namespace Source.Health
 
         public void Die()
         {
-            _dieHandler.Dying();
+            _dieHandler.Die();
         }
 
         public void SetMaxHealth(int maxHealth)

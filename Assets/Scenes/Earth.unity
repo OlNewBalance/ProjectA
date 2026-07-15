@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 04d0c49328d85614aa2214e9cb001883, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -248,8 +248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf202e7726a4ac4aa08a8de423003ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Main
-  _player: {fileID: 1372829044}
   _planetOrbite: {fileID: 153151033}
+  playerPrefab: {fileID: 0}
+  coinPrefab: {fileID: 0}
+  enemySpawnerPrefab: {fileID: 0}
+  playerSpawnPosition: {x: 0, y: 0}
+  cameraPrefab: {fileID: 0}
+  _levelHandler: {fileID: 0}
 --- !u!114 &706860172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,17 +491,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3763160566329401191, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
   m_PrefabInstance: {fileID: 963585537}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1372829044 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2680097299145441987, guid: 586eb736f0c2ad3429be70d567fc1030, type: 3}
-  m_PrefabInstance: {fileID: 963585537}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372829038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b42c03bd0927e24a8538410cd81ed55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Source.Objects.Player
 --- !u!114 &1372829049
 MonoBehaviour:
   m_ObjectHideFlags: 0
