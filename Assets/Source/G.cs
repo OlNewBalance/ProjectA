@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sourceг
+namespace Source
 {
     public static class G
     {
@@ -34,6 +34,7 @@ namespace Sourceг
         public static Action<int> OnExpChanged;
 
         public static int PlayerDamage { get; set; }
+        public static int FastTravelLVL { get; set; }
         private static Dictionary<int, int> _playerDamageByLevel = new Dictionary<int, int>();
 
         public static Dictionary<int, int> LevelMap { get; private set; } = new Dictionary<int, int>();
@@ -46,6 +47,15 @@ namespace Sourceг
         public static int EnemyMoveMaxSpeed { get; set; }
         private static  Dictionary<int, int> _enemyMoveMaxSpeedByLevel = new Dictionary<int, int>();
         public static int EnemyCorvetteDamage { get; set; }
+
+        //FastTravel
+
+        public static Dictionary<int, AlterHole> GloryHoles { get; set; }
+        public static float AttractionForce { get; set; }
+        public static int EarthSceneIndex { get; set;}
+        public static int MoonSceneIndex { get; set; }
+        public static int MarsSceneIndex { get; set; }
+
         private static  Dictionary<int, int> _enemyCorvetteDamageByLevel = new Dictionary<int, int>();
         public static int CurrentCoinExpValue { get; set; }
         private static  Dictionary<int, int> _currentCoinExpByLevel = new Dictionary<int, int>();

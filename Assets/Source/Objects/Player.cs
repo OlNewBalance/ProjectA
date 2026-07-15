@@ -2,7 +2,7 @@ using Source.Health;
 using Source.Move;
 using Source.Objects.Projectiles.Bullet;
 using Source.Shoot;
-using Sourceг;
+using Source;
 using UnityEngine;
 using IInitiator = Source.Shoot.IInitiator;
 
@@ -25,9 +25,11 @@ namespace Source.Objects
         private IShoot _shoot;
         private IHealth _health;
         private Camera _camera;
+        public Rigidbody2D _rigidbody { get; private set; }
 
         private void Awake()
         {
+            _rigidbody = GetComponent<Rigidbody2D>();
             _move = GetComponent<IMove>();
             _shoot = GetComponent<IShoot>();
         }

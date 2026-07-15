@@ -161,6 +161,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &1258079670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258079672}
+  - component: {fileID: 1258079671}
+  - component: {fileID: 1258079673}
+  - component: {fileID: 1258079674}
+  m_Layer: 0
+  m_Name: Bootstrap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &1258079671 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 724190116655002478, guid: 1e5b6339c3a735342a6c02364d570ccc, type: 3}
@@ -371,11 +390,39 @@ PrefabInstance:
       insertIndex: 2
       addedObject: {fileID: 1729472807}
   m_SourcePrefab: {fileID: 100100000, guid: 9df9430b35861924f927f651c730f0ee, type: 3}
---- !u!20 &2132027021 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4510980641644267145, guid: 7909ab1227bf30046b25982184e7a756, type: 3}
-  m_PrefabInstance: {fileID: 1445153093874756627}
+--- !u!114 &1258079673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258079670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf202e7726a4ac4aa08a8de423003ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Main
+  player: {fileID: 0}
+  alterHoles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &1258079674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258079670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a273ccaacb4b124d954320f224f7ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMachine
+  scenes:
+  - 
+  - 
+  - 
 --- !u!1001 &1445153093874756627
 PrefabInstance:
   m_ObjectHideFlags: 0
