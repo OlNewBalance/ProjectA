@@ -33,7 +33,7 @@ namespace Source.Move
             _inputActions.Disable();
         }
 
-        public void Init(Source.Objects.Player player)
+        public void InitPlayer(Source.Objects.Player player)
         {
             _player = player;
         }

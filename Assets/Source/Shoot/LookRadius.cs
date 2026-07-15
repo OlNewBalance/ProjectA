@@ -21,7 +21,7 @@ public class LookRadius : MonoBehaviour
         }
     }
 
-    public ref Player Player()
+    public ref readonly Player Player()
     {
         return ref _player;
     }

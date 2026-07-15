@@ -17,6 +17,7 @@ TagManager:
   - LR
   - Bullet
   - Enemy
+  - CameraFollow
   - Holes
   - 
   - 

@@ -4,6 +4,6 @@ namespace Source.Shoot
 {
     public interface IShoot
     {
-        void Shoot();
+        void Shoot(int damage);
     }
 }

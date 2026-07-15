@@ -5,9 +5,8 @@ namespace Source.Objects
 {
     public interface IBullet
     {
-        int Damage { get; }
 
-        void Shoot(Vector2 direction, InitiatorType initiatorType);
+        void Shoot(Vector2 direction);
 
         float BulletTimeoutSeconds();
     }
