@@ -14,26 +14,31 @@ namespace Source.Objects
     [RequireComponent(typeof(IHealth))]
     public class Player : MonoBehaviour, IInitiator
     {
-        [SerializeField] private Source.Move.InputService inputService;
         [SerializeField] private Bullet bulletPrefab;
-        [SerializeField] private UnityEngine.Camera camera;
         [SerializeField] private Transform bulletOrigin;
+
+        public InputService InputService { get; set; }
 
         private Vector2 _position;
         private BulletPool _bulletPool;
         private IMove _move;
         private IShoot _shoot;
         private IHealth _health;
+        private Camera _camera;
 
         private void Awake()
         {
-            _bulletPool = new BulletPool();
-            _bulletPool.Init(bulletPrefab);
             _move = GetComponent<IMove>();
             _shoot = GetComponent<IShoot>();
-            inputService.OnShoot += Shoot;
         }
 
+        public void InitPlayer(Camera camera)
+        {
+            _camera = Camera.main;
+            _bulletPool = new BulletPool();
+            _bulletPool.Init(bulletPrefab);
+            InputService.OnShoot += Shoot;
+        }
         private void FixedUpdate()
         {
             _position = transform.position;
@@ -53,13 +58,13 @@ namespace Source.Objects
 
         private void HandleRotation()
         {
-            var target = camera.ScreenToWorldPoint(inputService.MouseValue());
+            var target = _camera.ScreenToWorldPoint(InputService.MouseValue());
            _move.RotateTo(target);
         }
 
         private void HandleMovement()
         {
-            Vector2 keyBoardValue = inputService.KeyBoardValue();
+            Vector2 keyBoardValue = InputService.KeyBoardValue();
             _move.MoveTo(keyBoardValue);
         }
         

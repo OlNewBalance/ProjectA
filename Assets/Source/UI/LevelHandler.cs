@@ -28,7 +28,6 @@ namespace Source.UI
                 v = Math.Clamp(value / G.LevelMap[G.CurrentLevel], 0, 1);
             }
             _slider.value = v;
-            
         }
         private void OnLevelChanged(int i)
         {
