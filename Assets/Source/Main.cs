@@ -3,7 +3,6 @@ using Source.Objects;
 using Source.Pickup;
 using Source.UI;
 using Source.WorldEvents;
-using Source;
 using UnityEngine;
 
 namespace Source

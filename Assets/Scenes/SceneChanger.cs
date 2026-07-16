@@ -13,7 +13,6 @@ public class SceneChanger : MonoBehaviour
     public void ChangeScene(int holeRank)
     {
         SceneManager.UnloadSceneAsync(_curentSceneIndex);
-        //_curentSceneIndex = SceneManager.GetSceneByBuildIndex(holeRank).buildIndex;
 
         switch (holeRank)
         {

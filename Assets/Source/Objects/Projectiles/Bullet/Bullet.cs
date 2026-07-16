@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Source.Objects.Projectiles.Bullet
 {
+    [RequireComponent(typeof(Bullet))]
     [RequireComponent(typeof(Rigidbody2D))]
     public class Bullet : MonoBehaviour, IBullet
     {

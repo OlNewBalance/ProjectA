@@ -1,11 +1,6 @@
 using Source.Objects;
 using System.Collections;
-using Unity.VectorGraphics;
-using UnityEditor.Build.Content;
-using UnityEditor.Build.Profile;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AlterHole : MonoBehaviour
 {

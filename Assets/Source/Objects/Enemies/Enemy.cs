@@ -3,9 +3,14 @@ using Source.Move;
 using Source;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Source.Health;
 
 namespace Source.Objects.Enemies
 {
+    [RequireComponent(typeof(EnemyHealthUI))]
+    [RequireComponent(typeof(Health.Health))]
+    [RequireComponent(typeof(EnemyDie))]
+    [RequireComponent(typeof(Source.Move.Move))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(IMove))]
     [RequireComponent(typeof(IShoot))]

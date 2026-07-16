@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5766039185838810514}
   - component: {fileID: 3708801671326577512}
   - component: {fileID: 2992266887599505782}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: WormHolePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,6 +8,8 @@ using IInitiator = Source.Shoot.IInitiator;
 
 namespace Source.Objects
 {
+    [RequireComponent(typeof(PlayerDie))]
+    [RequireComponent(typeof(Health.Health))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Move.Move))]
     [RequireComponent(typeof(ShootDefault))]
