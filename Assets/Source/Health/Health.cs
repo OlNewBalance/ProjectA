@@ -30,6 +30,7 @@ namespace Source.Health
             {
                 Die();
             }
+            
         }
 
         public void Heal(int heal)

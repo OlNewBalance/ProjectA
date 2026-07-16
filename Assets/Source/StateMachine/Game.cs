@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-
+﻿
 namespace Source.StateMachine
 {
     public class Game: IState
@@ -21,7 +20,7 @@ namespace Source.StateMachine
 
         public void Exit()
         {
-            
+            _bs.CleanupFromGame();
         }
     }
 }

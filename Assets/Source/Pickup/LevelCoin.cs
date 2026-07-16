@@ -1,6 +1,4 @@
-﻿using System;
-using Source;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Source.Pickup
 {

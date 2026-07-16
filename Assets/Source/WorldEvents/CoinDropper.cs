@@ -1,5 +1,4 @@
 ﻿using Source.Pickup;
-using Source;
 using UnityEngine;
 
 namespace Source.WorldEvents

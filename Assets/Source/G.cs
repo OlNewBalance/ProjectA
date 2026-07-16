@@ -97,7 +97,7 @@ namespace Source
                 enemyCorvetteDamageByLevel:  new Dictionary<int, int>()
                 {
                     {1, 1},
-                    {2, 5},
+                    {2, 100},
                     {3, 10}
                 },
                 currentCoinExpByLevel: new Dictionary<int, int>()

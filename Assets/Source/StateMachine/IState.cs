@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-
+﻿
 namespace Source.StateMachine
 {
     public interface IState

@@ -262,9 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b42c03bd0927e24a8538410cd81ed55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Objects.Player
-  inputService: {fileID: 0}
   bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
-  camera: {fileID: 0}
   bulletOrigin: {fileID: 8309341358714494052}
 --- !u!50 &8724573627917140698
 Rigidbody2D:

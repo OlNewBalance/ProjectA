@@ -4,9 +4,19 @@ namespace Source.Health
 {
     public class PlayerDie: MonoBehaviour, IDie
     {
+        private Main _main;
+        
+        public void InitPlayerDie(Main main)
+        {
+            _main = main;
+        }
+        
         public void Die()
         {
-            Destroy(gameObject);
+            if (_main !=null)
+            {
+                _main.Die();
+            }
         }
     }
 }

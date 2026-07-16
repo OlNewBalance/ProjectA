@@ -1,5 +1,4 @@
 ﻿using System;
-using Source;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +9,8 @@ namespace Source.UI
     {
         [SerializeField] private TextMeshProUGUI _levelText;
         [SerializeField] private Slider _slider;
-        private void Awake()
+
+        public void InitLevelHandler()
         {
             G.OnLevelChanged += OnLevelChanged;
             G.OnExpChanged += OnExpChanged;
@@ -32,6 +32,12 @@ namespace Source.UI
         private void OnLevelChanged(int i)
         {
             _levelText.text = $"Level {i}";
+        }
+
+        private void OnDestroy()
+        {
+            G.OnLevelChanged -= OnLevelChanged;
+            G.OnExpChanged -= OnExpChanged;
         }
     }
 }

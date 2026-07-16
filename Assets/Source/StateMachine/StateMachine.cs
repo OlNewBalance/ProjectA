@@ -15,6 +15,7 @@ namespace Source.StateMachine
             {
                 { StateName.Menu , new  MenuState(bs) },
                 { StateName.Game , new Game(bs) },
+                {StateName.GameOver, new GameOver(bs)}
             };
             _currentState = States[initialState];
             _currentState.Enter();

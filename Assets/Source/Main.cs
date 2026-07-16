@@ -1,49 +1,55 @@
-﻿using Source.Move;
+﻿using Source.Health;
+using Source.Move;
 using Source.Objects;
 using Source.Pickup;
 using Source.UI;
 using Source.WorldEvents;
-using Source;
 using UnityEngine;
 
 namespace Source
 {
     [RequireComponent(typeof(InputService))]
-    [RequireComponent(typeof(AvailableArea))]
     public class Main: MonoBehaviour
     {
-        [SerializeField] private PlanetOrbite _planetOrbite;
-
-        //[SerializeField] private AlterHole[] alterHoles;
         [SerializeField] private Player playerPrefab;
         [SerializeField] private LevelCoin coinPrefab;
         [SerializeField] private Spawner enemySpawnerPrefab;
         [SerializeField] private Vector2 playerSpawnPosition;
         [SerializeField] private Camera cameraPrefab;
-        [SerializeField] private LevelHandler _levelHandler;
+        [SerializeField] private LevelHandler playerUIHandlerPrefab;
+        [SerializeField] private PlanetOrbit planetOrbitPrefab;
+        [SerializeField] private AvailableArea availableAreaPrefab;
+
+        private Bootstrap _bootstrap;
         
         private InputService _is;
         private AvailableArea _availableArea;
+        private PlanetOrbit _spaceObjectPosition;
         private Transform _playerPosition;
-        private Transform _spaceObjectPosition;
-
         private CoinDropper _coinDropper;
         private Spawner _enemySpawner;
         private Player _player;
         private Camera _mainCamera;
-        private LevelHandler _levelUI;
-        
+        private LevelHandler _playerUI;
+        private PlayerHealthHandler _healthUi;
+
         private void Awake()
         {
-            InitCamera();
             _coinDropper = new CoinDropper();
             InitG();
+            InitCamera();
+            InitAvailableArea();
+            InitSpaceObject();
             InitInputService();
             InitPlayer();
             InitUI();
             InitSpawner();
         }
 
+        public void SetBootstrap(Bootstrap bs)
+        {
+            _bootstrap = bs;   
+        }
         private void InitCamera()
         {
             _mainCamera = Camera.main;
@@ -51,19 +57,26 @@ namespace Source
         private void InitInputService()
         {
             _is = GetComponent<InputService>();
-            _availableArea = GetComponent<AvailableArea>();
-            _playerPosition = _player.GetComponent<Transform>();
-            _spaceObjectPosition = _planetOrbite.GetComponent<Transform>();
-            
-            Debug.Log(_is);
+        }
+
+        private void InitAvailableArea()
+        {
+            _availableArea = Instantiate(availableAreaPrefab, transform);
+        }
+
+        private void InitSpaceObject()
+        {
+            _spaceObjectPosition = Instantiate(planetOrbitPrefab, transform);
         }
 
         private void InitPlayer()
         {
-            _player = Instantiate<Player>(playerPrefab, playerSpawnPosition, Quaternion.identity);
+            _player = Instantiate(playerPrefab, playerSpawnPosition, Quaternion.identity);
             _player.InputService = _is;
             _is.InitPlayer(_player);
             _player.InitPlayer(_mainCamera);
+            _player.GetComponent<PlayerDie>().InitPlayerDie(this);
+            _playerPosition = _player.GetComponent<Transform>();
         }
 
         private void InitSpawner()
@@ -75,14 +88,8 @@ namespace Source
             G.OnExpChanged += i => Debug.Log(i);
             G.CurrentCoinExpValue = 10;
             G.FastTravelLVL = 5; // УСЛОВНО, ПРЯ НАДОБНОСТИ - ПОМЕНЯТЬ
-            //G.GloryHoles = new System.Collections.Generic.Dictionary<int, AlterHole>
-            //{
-            //    {0, alterHoles[0]},
-            //    {1, alterHoles[1]},
-            //    {2, alterHoles[2]}
-            //};
             G.AttractionForce = 150;
-            G.CurrentLevel = 5;
+            G.CurrentLevel = 1;
             G.EarthSceneIndex = 1;
             G.MoonSceneIndex = 2;
             G.MarsSceneIndex = 3;
@@ -94,14 +101,26 @@ namespace Source
 
         private void InitUI()
         {
-            _is.InitPlayer(_player);
-            _availableArea.Init(ref _playerPosition, ref _spaceObjectPosition);
-            _levelUI = Instantiate(_levelHandler);
+            _availableArea.Init(_playerPosition, _spaceObjectPosition.transform);
+            _playerUI = Instantiate(playerUIHandlerPrefab);
+            _healthUi = _playerUI.GetComponent<PlayerHealthHandler>();
+            
+            _healthUi.InitPlayer(_player.GetComponent<IHealth>());
+            _playerUI.InitLevelHandler();
         }
 
         private static void InitG()
         {
             G.InitG(G.DefaultInit);
+        }
+
+        public void Die()
+        {
+            Destroy(_availableArea);
+            Destroy(_spaceObjectPosition);
+            Destroy(_enemySpawner);
+            Destroy(_player);
+            _bootstrap.ToStateGameOver();
         }
     }  
 }

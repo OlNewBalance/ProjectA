@@ -1,5 +1,3 @@
-using Source;
-using Source.CameraUtil;
 using Source.Objects;
 using System.Collections;
 using UnityEngine;
@@ -30,9 +28,6 @@ public class WormHole : MonoBehaviour
             }
 
             _machine.ChangeScene(_holeRank);
-            //_machine.SetScene(_holeRank);
-            //, player, _followPlayer
-            //player.transform.position = Source.G.GloryHoles[_holeRank - 1].transform.position; //мюонлхмюкйю онкегмн...
         }
     }
 
@@ -41,7 +36,6 @@ public class WormHole : MonoBehaviour
         Vector2 kickOutPoint = new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.x + Random.Range(-20, 20));
         player._rigidbody.AddForce(kickOutPoint * Source.G.AttractionForce, ForceMode2D.Impulse);
 
-        // кнцхйю еякх ме убюрюер кебекю
     }
 
     private IEnumerator Attraction(Player player)

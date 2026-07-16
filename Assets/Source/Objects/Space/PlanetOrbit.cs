@@ -1,7 +1,8 @@
 using Source.Objects;
 using UnityEngine;
 
-public class PlanetOrbite : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public class PlanetOrbit : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {

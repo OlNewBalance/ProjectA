@@ -2,7 +2,6 @@ using Source.Health;
 using Source.Move;
 using Source.Objects.Projectiles.Bullet;
 using Source.Shoot;
-using Source;
 using UnityEngine;
 using IInitiator = Source.Shoot.IInitiator;
 

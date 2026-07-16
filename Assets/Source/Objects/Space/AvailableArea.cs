@@ -1,7 +1,6 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-
 public class AvailableArea : MonoBehaviour
 {
     private Transform _playerPosition;
@@ -17,9 +16,10 @@ public class AvailableArea : MonoBehaviour
         {
             Debug.Log("SUKA");
         }
+        
     }
 
-    public void Init(ref Transform playerPosition, ref Transform spaceObjectPosition)
+    public void Init( Transform playerPosition, Transform spaceObjectPosition)
     {
         _playerPosition = playerPosition;
         _spaceObjectPosition = spaceObjectPosition;

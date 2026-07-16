@@ -10,6 +10,7 @@ namespace Source.StateMachine
         [SerializeField] private GameObject loadingCover;
         private float _loadingProgress;
         private bool _isLoading;
+        
         public IEnumerator LoadLevelAsync(string sceneName, Action callback)
         {
             _isLoading = true;
@@ -17,13 +18,11 @@ namespace Source.StateMachine
             AsyncOperation loading = SceneManager.LoadSceneAsync(sceneName);
             if (loading == null)
             {
-                Debug.LogError($"{sceneName} scene not found");
                 yield break;
             }
             while (!loading.isDone)
             {
                 _loadingProgress = loading.progress;
-                Debug.Log(loading.progress);
                 yield return new WaitForEndOfFrame();
             }
             callback();

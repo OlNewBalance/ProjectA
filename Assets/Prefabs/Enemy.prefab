@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 7734890041738879298}
   - component: {fileID: 5721726332979390142}
   - component: {fileID: 3180262324781424724}
-  - component: {fileID: 4507417855265178055}
   - component: {fileID: -5186630892195898516}
+  - component: {fileID: -7002914858511257896}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Enemy
@@ -221,18 +221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Health.Health
   maxHealth: 2
---- !u!114 &4507417855265178055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202196202669001449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3a4b7f128e48f09f180c2a49194fe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Source.Health.EnemyDie
 --- !u!114 &-5186630892195898516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +235,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Source.Move.Move
   speed: 20
   maxSpeed: 30
+--- !u!114 &-7002914858511257896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202196202669001449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923fdd37073edf4408935697780ee2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Source.Health.EnemyDie
 --- !u!1 &1732950628915851706
 GameObject:
   m_ObjectHideFlags: 0

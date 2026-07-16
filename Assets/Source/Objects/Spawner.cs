@@ -52,9 +52,6 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(_spawnCoolDown);
 
-            //Vector2 maxScreenAngle = _camera.ScreenToViewportPoint(new Vector3(1, 1, 0));
-            //Vector2 minScreenAngle = _camera.ScreenToViewportPoint(new Vector3(0, 0, 0));
-            //spawnPoint = new Vector2(Random.Range(minScreenAngle.x, maxScreenAngle.x), Random.Range(minScreenAngle.y, maxScreenAngle.y));
             spawnPoint = new Vector2(Player.PlayerPosition().x + Random.Range(-50, 50), Player.PlayerPosition().y + Random.Range(-50, 50));
 
             Enemy newEnemy = _pool.GetEnemy(_enemyPrefab);
