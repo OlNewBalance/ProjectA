@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 286426373591493579}
   - component: {fileID: 724190116655002478}
   - component: {fileID: 3611069137588935300}
-  - component: {fileID: 5451766994517261467}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -64,41 +63,3 @@ MonoBehaviour:
   playerSpawnPosition: {x: 0, y: 0}
   cameraPrefab: {fileID: 4510980641644267145, guid: 1c01d997388dea94fb47c0c05c2f3cbb, type: 3}
   playerUIHandlerPrefab: {fileID: -6492514364800323025, guid: 768b1b86becf4e8459f4917ecc408a56, type: 3}
-  planetOrbitPrefab: {fileID: 7098388771420800120, guid: 6fd0f0080d8a9d54dad28c2b2dfe16c9, type: 3}
-  availableAreaPrefab: {fileID: 3657187104272953276, guid: 8b575221e389a6d40beea537333b2405, type: 3}
---- !u!58 &5451766994517261467
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8521393426687942642}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5

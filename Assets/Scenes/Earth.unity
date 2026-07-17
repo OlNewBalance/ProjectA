@@ -221,6 +221,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 5618754729645820840, guid: 472c9504efc27144aa881c352fba4225, type: 3}
   enemySpawnerPrefab: {fileID: 1226953640409930746, guid: a83c98ab869a0c94fbeecfc72d0116e6, type: 3}
   playerSpawnPosition: {x: 0, y: 0}
+  cameraPrefab: {fileID: 2132027021}
   playerUIHandlerPrefab: {fileID: -6492514364800323025, guid: 768b1b86becf4e8459f4917ecc408a56, type: 3}
 --- !u!114 &706860172
 MonoBehaviour:
@@ -529,7 +530,7 @@ GameObject:
   - component: {fileID: 2132027019}
   - component: {fileID: 2132027024}
   - component: {fileID: 2132027023}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,8 +667,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c2488139f7df144b2f2dbdfcc6ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.CameraUtil.FollowPlayer
-  recenterSpeed: 2
-  enterRadius: 2
+  recenterSpeed: 0.5
+  enterRadius: 5
 --- !u!61 &2132027024
 BoxCollider2D:
   m_ObjectHideFlags: 0

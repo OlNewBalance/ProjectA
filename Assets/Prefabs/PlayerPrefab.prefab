@@ -234,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3763160566329401191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aaa2987cf6411d46a26eed0358a6893, type: 3}
+  m_Script: {fileID: 11500000, guid: ac97a7529821a09409f6eb49f5a91183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Health.Health
   maxHealth: 100
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3763160566329401191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810c879091cd4c8e9e3722fbac667510, type: 3}
+  m_Script: {fileID: 11500000, guid: b3981cc359a7d1446957b6a46bbd337a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Health.PlayerDie
 --- !u!114 &2680097299145441987
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b42c03bd0927e24a8538410cd81ed55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Objects.Player
-  bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
+  bulletPrefab: {fileID: 7639944649174556669, guid: 07722d7a3e0c023428c981871b6b7f5b, type: 3}
   bulletOrigin: {fileID: 8309341358714494052}
 --- !u!50 &8724573627917140698
 Rigidbody2D:
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3763160566329401191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39288b23f82e4840b4a60dd376c3eb73, type: 3}
+  m_Script: {fileID: 11500000, guid: ea1b1eb3fec10b04897dd9225426fe1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Move.Move
   speed: 20
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d33b2e162f64cf99207530404e685d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Shoot.ShootDefault
-  bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
+  bulletPrefab: {fileID: 7639944649174556669, guid: 07722d7a3e0c023428c981871b6b7f5b, type: 3}
   bulletOrigin: {fileID: 8309341358714494052}
   initiator: 1
 --- !u!114 &4086392509416524773

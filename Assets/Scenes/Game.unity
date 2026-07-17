@@ -175,12 +175,20 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 7621005050833794203, guid: 1c01d997388dea94fb47c0c05c2f3cbb, type: 3}
+      propertyPath: enterRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621005050833794203, guid: 1c01d997388dea94fb47c0c05c2f3cbb, type: 3}
+      propertyPath: recenterSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c01d997388dea94fb47c0c05c2f3cbb, type: 3}
---- !u!1001 &1512137951
+--- !u!1001 &1717210460
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -194,11 +202,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3597128254525850648, guid: d3541f3bdb82756479862b1392227500, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1841.766
+      value: -360.12155
       objectReference: {fileID: 0}
     - target: {fileID: 3597128254525850648, guid: d3541f3bdb82756479862b1392227500, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 987.15216
+      value: 26.9908
       objectReference: {fileID: 0}
     - target: {fileID: 3597128254525850648, guid: d3541f3bdb82756479862b1392227500, type: 3}
       propertyPath: m_LocalPosition.z
@@ -236,7 +244,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: eac5fead043ea5145a64518f7d1260f4, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: d3541f3bdb82756479862b1392227500, type: 3}
 --- !u!1 &1784290255
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f8e238c08405341bf20d392c49c1a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WormHole
+  _sceneChanger: {fileID: 0}
   _holeRank: 4
 --- !u!4 &1784290257
 Transform:
@@ -341,7 +350,7 @@ SpriteRenderer:
   m_Size: {x: 0.85, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!70 &1784290259
@@ -457,7 +466,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!4 &2087847718
@@ -528,6 +537,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 152085221}
-  - {fileID: 1512137951}
   - {fileID: 2087847718}
   - {fileID: 1784290257}
+  - {fileID: 1717210460}

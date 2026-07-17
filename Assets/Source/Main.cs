@@ -22,7 +22,7 @@ namespace Source
         private Bootstrap _bootstrap;
         
         private InputService _is;
-        private AvailableArea _availableArea;
+
         private PlanetOrbit _spaceObjectPosition;
         private Transform _playerPosition;
         private CoinDropper _coinDropper;
@@ -112,7 +112,6 @@ namespace Source
 
         public void Die()
         {
-            Destroy(_availableArea);
             Destroy(_spaceObjectPosition);
             Destroy(_enemySpawner);
             Destroy(_player);
@@ -121,7 +120,6 @@ namespace Source
 
         public void Victory()
         {
-            Destroy(_availableArea);
             Destroy(_spaceObjectPosition);
             Destroy(_enemySpawner);
             Destroy(_player);

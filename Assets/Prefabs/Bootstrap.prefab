@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729681ead7621bf4cab807410a8932b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Bootstrap
-  loadingPrefab: {fileID: 0}
+  loadingPrefab: {fileID: 7492776296242085946, guid: f901c7f873cae984f82cd9f7d84f4055, type: 3}
   mainPrefab: {fileID: 3611069137588935300, guid: 704e62a7111e65f428e216953a181717, type: 3}
   gameOverPrefab: {fileID: 5485890610178058114, guid: 5456ecdf30b93504f9af7cca968c5a3e, type: 3}
-  gameVictotyPrefab: {fileID: 0}
+  gameVictotyPrefab: {fileID: -4129263348143295486, guid: d05da36cd99ad9a4d9abc5dee24a34c0, type: 3}

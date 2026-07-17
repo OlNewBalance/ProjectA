@@ -11,14 +11,14 @@ namespace Source
         [SerializeField] private Main mainPrefab;
         [SerializeField] private GameOverMain gameOverPrefab;
         [SerializeField] private GameVictotyMain gameVictotyPrefab;
-        
-        public LoadingPlaceholder Loading { get;  private set; }
+
+        public LoadingPlaceholder Loading { get; private set; }
         public StateMachine.StateMachine stateMachine;
-        
+
         private Main _main;
         private GameOverMain _gameOver;
         private GameVictotyMain _gameVictoty;
-        
+
         public static Bootstrap Instance { get; private set; }
 
         private void Awake()
@@ -91,7 +91,6 @@ namespace Source
 
         public void ToStateVictory()
         {
-            Debug.Log("Die");
             stateMachine.SwitchState(StateName.GameOver);
         }
 
