@@ -7,13 +7,14 @@ using Random = UnityEngine.Random;
 
 public class WormHole : MonoBehaviour
 {
+    [SerializeField] private SceneChanger _sceneChanger;
     [SerializeField] private int _holeRank;
     private Vector2 _transform;
     private float _attractionTime = 3;
-    private Bootstrap _bs;
+
     private void Awake()
     {
-        _bs = Bootstrap.Instance;
+        _transform = transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,13 +23,13 @@ public class WormHole : MonoBehaviour
         {
             StartCoroutine(Attraction(player));
 
-            if (G.CurrentLevel != G.FastTravelLVL)
+            if (Source.G.UnlokedLocations[_holeRank] == false)
             {
                 KickOut(player);
                 return;
             }
 
-            _bs.ChangeGameScene(_holeRank);
+            _sceneChanger.ChangeScene(_holeRank);
         }
     }
 

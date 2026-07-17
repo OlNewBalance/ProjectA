@@ -2,6 +2,7 @@ using Source.Health;
 using Source.Move;
 using Source.Objects.Projectiles.Bullet;
 using Source.Shoot;
+using System;
 using UnityEngine;
 using IInitiator = Source.Shoot.IInitiator;
 
@@ -17,6 +18,7 @@ namespace Source.Objects
         [SerializeField] private Transform bulletOrigin;
 
         public InputService InputService { get; set; }
+        public event Action OnVictory;
 
         private Vector2 _position;
         private BulletPool _bulletPool;
@@ -44,6 +46,7 @@ namespace Source.Objects
         {
             _position = transform.position;
             Move();
+            VictoryCheck();
         }
 
         private void OnDestroy()
@@ -73,7 +76,7 @@ namespace Source.Objects
             Vector2 keyBoardValue = InputService.KeyBoardValue();
             _move.MoveTo(keyBoardValue);
         }
-        
+
         public InitiatorType GetInitiatorType()
         {
             return InitiatorType.Player;
@@ -81,7 +84,12 @@ namespace Source.Objects
 
         public ref readonly Vector2 PlayerPosition()
         {
-             return ref _position;
+            return ref _position;
+        }
+
+        private void VictoryCheck()
+        {
+            if (G.CurrentLevel == G.MaxLevel) OnVictory?.Invoke();
         }
     }
 }

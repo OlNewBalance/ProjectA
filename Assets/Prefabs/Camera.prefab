@@ -194,8 +194,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3406584595225808634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6826997d78949ebb00e778d4276b465, type: 3}
+  m_Script: {fileID: 11500000, guid: 11c2488139f7df144b2f2dbdfcc6ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.CameraUtil.FollowPlayer
-  recenterSpeed: 0.5
-  enterRadius: 5
+  recenterSpeed: 0
+  enterRadius: 0

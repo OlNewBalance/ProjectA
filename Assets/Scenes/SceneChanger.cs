@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,25 +13,15 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene(int holeRank)
     {
+        DontDestroyOnLoad(gameObject);
         SceneManager.UnloadSceneAsync(_curentSceneIndex);
-        //_curentSceneIndex = SceneManager.GetSceneByBuildIndex(holeRank).buildIndex;
 
-        switch (holeRank)
+        if (Source.G.UnlokedLocations[holeRank] == false)
         {
-            case 1:
-                _curentSceneIndex = Source.G.EarthSceneIndex;
-                break;
-            case 2:
-                _curentSceneIndex = Source.G.MoonSceneIndex;
-                break;
-            case 3:
-                _curentSceneIndex = Source.G.MarsSceneIndex;
-                break;
-            default:
-                _curentSceneIndex = Source.G.MoonSceneIndex;
-                break;
+            return;
         }
 
+        _curentSceneIndex = holeRank;
         SceneManager.LoadSceneAsync(_curentSceneIndex);
     }
 }

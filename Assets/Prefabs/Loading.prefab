@@ -42,10 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1887041216597898024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a20c0e165554c92960719f255003184, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d5daff019e71f844be3242a9ff83cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.StateMachine.LoadingPlaceholder
-  loadingCover: {fileID: 6707923696794919542}
+  loadingCover: {fileID: 1887041216597898024}
 --- !u!1 &1947088915818461358
 GameObject:
   m_ObjectHideFlags: 0

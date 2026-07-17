@@ -375,6 +375,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eac5fead043ea5145a64518f7d1260f4, type: 3}
+--- !u!1 &2793592808285695772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1904452998514299087, guid: 02c65c6e9105f1343bc9d8b403d21d42, type: 3}
+  m_PrefabInstance: {fileID: 2793592808285695771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2793592808285695773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2793592808285695772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0eda947dce2fcc4bacacd925d0d46b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetOrbit
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
