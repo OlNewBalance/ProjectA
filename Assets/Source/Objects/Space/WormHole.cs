@@ -2,12 +2,13 @@ using System;
 using Source.Objects;
 using System.Collections;
 using Source;
+using Source.StateMachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class WormHole : MonoBehaviour
 {
-    [SerializeField] private int _holeRank;
+    [SerializeField] private GameScene toLocation;
     private Vector2 _transform;
     private float _attractionTime = 3;
     private Bootstrap _bs;
@@ -22,13 +23,13 @@ public class WormHole : MonoBehaviour
         {
             StartCoroutine(Attraction(player));
 
-            if (G.CurrentLevel != G.FastTravelLVL)
+            if (G.CurrentLevel < G.FastTravelLVL[toLocation])
             {
                 KickOut(player);
                 return;
             }
 
-            _bs.ChangeGameScene(_holeRank);
+            _bs.ChangeGameScene(toLocation);
         }
     }
 

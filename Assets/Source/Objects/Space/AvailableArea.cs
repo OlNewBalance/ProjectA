@@ -1,27 +1,73 @@
+using System.Collections;
+using System.Collections.Generic;
+using Source;
+using Source.Objects;
+using Source.Objects.Space;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class AvailableArea : MonoBehaviour
 {
-    private Transform _playerPosition;
-    private Transform _spaceObjectPosition;
-
-    private float _maxDistance = 1200f;
-
-    private void Update()
+    [SerializeField] private OutOfAreaPlaceholder outOfAreaPrefab;
+    
+    private CircleCollider2D _circleCollider;
+    private Coroutine _dieCoroutine;
+    private OutOfAreaPlaceholder _outOfAreaPlaceholder;
+    
+    private void OnEnable()
     {
-        float distance = Vector2.Distance(_playerPosition.position, _spaceObjectPosition.position);
-
-        if (distance > _maxDistance)
+        _circleCollider = GetComponent<CircleCollider2D>();
+        
+        _circleCollider.isTrigger = true;
+        _circleCollider.radius = Main.Instance.AvailableRadius;
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Player>(out Player _))
         {
-            Debug.Log("SUKA");
+            _dieCoroutine = StartCoroutine(StartGameOverScreen(5f));
         }
     }
 
-    public void Init( Transform playerPosition, Transform spaceObjectPosition)
+    private void OnDestroy()
     {
-        _playerPosition = playerPosition;
-        _spaceObjectPosition = spaceObjectPosition;
+        StopAllCoroutines();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Player>(out Player _))
+        {
+            if (_dieCoroutine != null)
+            {
+                StopCoroutine(_dieCoroutine);
+            }
+
+            if (_outOfAreaPlaceholder)
+            {
+                _outOfAreaPlaceholder.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private IEnumerator StartGameOverScreen(float time)
+    {
+        if (!_outOfAreaPlaceholder)
+        {
+            _outOfAreaPlaceholder = Instantiate(outOfAreaPrefab, transform);
+        }
+        else
+        {
+            _outOfAreaPlaceholder.gameObject.SetActive(false);
+        }
+        for (var i = 0; i < time; i++)
+        {
+            _outOfAreaPlaceholder.SetEstimated(time - i);
+            yield return new WaitForSeconds(1f);
+        } 
+        Main.Instance.Die();
+        yield return null;
     }
 }
 

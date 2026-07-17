@@ -1,16 +1,17 @@
-﻿using Source.UI;
+﻿using Source.StateMachine;
+using Source.UI;
 using UnityEngine;
 
 namespace Source
 {
-    public class GameOverMain: MonoBehaviour
+    public class VictoryMain: MonoBehaviour
     {
-        public static GameOverMain Instance { get; private set; }
+        public static VictoryMain Instance { get;  private set; }
         
-        [SerializeField] private GameOverUI gameOverUIPrefab;
+        [SerializeField] private VictoryUI victoryUIPrefab;
 
+        private VictoryUI _gameOverUI;
         private Bootstrap _bs;
-        private GameOverUI _gameOverUI;
         private void Awake()
         {
             if (Instance)
@@ -19,7 +20,7 @@ namespace Source
                 return;
             }
             _bs = Bootstrap.Instance;
-            _gameOverUI = Instantiate(gameOverUIPrefab, transform);
+            _gameOverUI = Instantiate(victoryUIPrefab, transform);
 
             Instance = this;
         }
@@ -33,5 +34,6 @@ namespace Source
         {
             _bs.ToStateMenu();
         }
+
     }
 }

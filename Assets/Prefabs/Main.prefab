@@ -66,6 +66,7 @@ MonoBehaviour:
   playerUIHandlerPrefab: {fileID: -6492514364800323025, guid: a096257afd0d4dd4a9539a3c7e267708, type: 3}
   planetOrbitPrefab: {fileID: 7098388771420800120, guid: 6fd0f0080d8a9d54dad28c2b2dfe16c9, type: 3}
   availableAreaPrefab: {fileID: 3657187104272953276, guid: 9d1bfcd42b6da4942a4287d30b3754a9, type: 3}
+  maxRadius: 200
 --- !u!58 &5451766994517261467
 CircleCollider2D:
   m_ObjectHideFlags: 0

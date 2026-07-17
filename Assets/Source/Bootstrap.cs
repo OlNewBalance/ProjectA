@@ -10,12 +10,14 @@ namespace Source
         [SerializeField] private LoadingPlaceholder loadingPrefab;
         [SerializeField] private Main mainPrefab;
         [SerializeField] private GameOverMain gameOverPrefab;
+        [SerializeField] private VictoryMain victoryPrefab;
         
         public LoadingPlaceholder Loading { get;  private set; }
         public StateMachine.StateMachine stateMachine;
         
         private Main _main;
         private GameOverMain _gameOver;
+        private VictoryMain _victory;
         
         public static Bootstrap Instance { get; private set; }
 
@@ -42,6 +44,11 @@ namespace Source
         {
             Loading = Instantiate(loadingPrefab, transform);
             
+        }
+        public bool LoadScene(GameScene sceneName, Action callback)
+        {
+            StartCoroutine(Loading.LoadLevelAsync(sceneName, callback));
+            return Loading.IsLoaded();
         }
         public bool LoadScene(string sceneName, Action callback)
         {
@@ -89,13 +96,24 @@ namespace Source
             Destroy(_main);
         }
 
-        public void ChangeGameScene(int holeRank)
+        public void ChangeGameScene(GameScene holeRank)
         {
             StartCoroutine(Loading.LoadLevelAsync(holeRank, () =>
             {
                 _main.OnGameLevelChange();
             }));
             
+        }
+
+        public void ToStateVictory()
+        {
+            stateMachine.SwitchState(StateName.Victory);
+            
+        }
+
+        public void StartVictory()
+        {
+            _victory = Instantiate(victoryPrefab);
         }
     }
 }

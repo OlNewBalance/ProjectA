@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7999267704424105011}
   - component: {fileID: 5202974296089623733}
   - component: {fileID: 3657187104272953276}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: AvailableArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,3 +81,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365368a50638c0745b8783261de79426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvailableArea
+  outOfAreaPrefab: {fileID: 897021191808309680, guid: a7bb1ba78a659e540b455a06f458b68f, type: 3}

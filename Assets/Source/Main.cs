@@ -20,6 +20,7 @@ namespace Source
         [SerializeField] private LevelHandler playerUIHandlerPrefab;
         [SerializeField] private PlanetOrbit planetOrbitPrefab;
         [SerializeField] private AvailableArea availableAreaPrefab;
+        [SerializeField] private float maxRadius;
 
         private Bootstrap _bootstrap;
         
@@ -35,7 +36,8 @@ namespace Source
         private PlayerHealthHandler _healthUi;
 
         public static Main Instance {get; private set;}
-        
+        public float AvailableRadius { get; private set; }
+
         private void Awake()
         {
             Instance = this;
@@ -76,8 +78,8 @@ namespace Source
 
         private void InitAvailableArea()
         {
+            AvailableRadius = maxRadius;
             _availableArea = Instantiate(availableAreaPrefab);
-            _availableArea.Init(_playerPosition, _spaceObjectPosition.transform);
         }
 
         private void InitSpaceObject()
@@ -101,13 +103,6 @@ namespace Source
             _enemySpawner.Player = _player;
             _enemySpawner.MainCamera = _mainCamera;
             
-            G.OnExpChanged += i => Debug.Log(i);
-            G.CurrentCoinExpValue = 10;
-            G.FastTravelLVL = 2;
-            G.AttractionForce = 150;
-            G.EarthSceneIndex = 1;
-            G.MoonSceneIndex = 2;
-            G.MarsSceneIndex = 3;
             _enemySpawner.OnEnemyDie += enemy =>
             {
                 _coinDropper.DecideToDropCoin(gameObject, coinPrefab, enemy.transform.position);
@@ -134,6 +129,15 @@ namespace Source
             Destroy(_enemySpawner);
             Destroy(_player);
             _bootstrap.ToStateGameOver();
+        }
+
+        public void Victory()
+        {
+            Destroy(_availableArea);
+            Destroy(_spaceObjectPosition);
+            Destroy(_enemySpawner);
+            Destroy(_player);
+            _bootstrap.ToStateVictory();
         }
     }  
 }

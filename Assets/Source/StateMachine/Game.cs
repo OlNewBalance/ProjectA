@@ -12,7 +12,7 @@ namespace Source.StateMachine
         
         public void Enter()
         {
-             _bs.LoadScene("Game", () =>
+             _bs.LoadScene(GameScene.Earth, () =>
              {
                  _bs.StartGame();
              });
