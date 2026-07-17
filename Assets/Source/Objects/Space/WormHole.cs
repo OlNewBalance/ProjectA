@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WormHole : MonoBehaviour
 {
-    //[SerializeField] private FollowPlayer _followPlayer;
-    [SerializeField] private SceneChanger _machine;
+    [SerializeField] private SceneChanger _sceneChanger;
     [SerializeField] private int _holeRank;
     private Vector2 _transform;
     private float _attractionTime = 3;
@@ -21,13 +20,13 @@ public class WormHole : MonoBehaviour
         {
             StartCoroutine(Attraction(player));
 
-            if (Source.G.CurrentLevel != Source.G.FastTravelLVL)
+            if (Source.G.UnlokedLocations[_holeRank] == false)
             {
                 KickOut(player);
                 return;
             }
 
-            _machine.ChangeScene(_holeRank);
+            _sceneChanger.ChangeScene(_holeRank);
         }
     }
 

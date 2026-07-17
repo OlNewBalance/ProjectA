@@ -114,7 +114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3154447730111109139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da89e9a0a4f60e4e89a7c123f316219, type: 3}
+  m_Script: {fileID: 11500000, guid: 559d91ab7c9aa4749b7dcdea665386c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
 --- !u!1 &3301054280420809571

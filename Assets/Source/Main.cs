@@ -4,6 +4,7 @@ using Source.Objects;
 using Source.Pickup;
 using Source.UI;
 using Source.WorldEvents;
+using System;
 using UnityEngine;
 
 namespace Source
@@ -15,10 +16,7 @@ namespace Source
         [SerializeField] private LevelCoin coinPrefab;
         [SerializeField] private Spawner enemySpawnerPrefab;
         [SerializeField] private Vector2 playerSpawnPosition;
-        [SerializeField] private Camera cameraPrefab;
         [SerializeField] private LevelHandler playerUIHandlerPrefab;
-        [SerializeField] private PlanetOrbit planetOrbitPrefab;
-        [SerializeField] private AvailableArea availableAreaPrefab;
 
         private Bootstrap _bootstrap;
         
@@ -38,35 +36,27 @@ namespace Source
             _coinDropper = new CoinDropper();
             InitG();
             InitCamera();
-            InitAvailableArea();
-            InitSpaceObject();
             InitInputService();
             InitPlayer();
             InitUI();
             InitSpawner();
+
+            _player.OnVictory += Victory;
         }
 
         public void SetBootstrap(Bootstrap bs)
         {
             _bootstrap = bs;   
         }
+
         private void InitCamera()
         {
             _mainCamera = Camera.main;
         }
+
         private void InitInputService()
         {
             _is = GetComponent<InputService>();
-        }
-
-        private void InitAvailableArea()
-        {
-            _availableArea = Instantiate(availableAreaPrefab, transform);
-        }
-
-        private void InitSpaceObject()
-        {
-            _spaceObjectPosition = Instantiate(planetOrbitPrefab, transform);
         }
 
         private void InitPlayer()
@@ -87,12 +77,7 @@ namespace Source
             
             G.OnExpChanged += i => Debug.Log(i);
             G.CurrentCoinExpValue = 10;
-            G.FastTravelLVL = 5; // УСЛОВНО, ПРЯ НАДОБНОСТИ - ПОМЕНЯТЬ
-            G.AttractionForce = 150;
-            G.CurrentLevel = 1;
-            G.EarthSceneIndex = 1;
-            G.MoonSceneIndex = 2;
-            G.MarsSceneIndex = 3;
+
             _enemySpawner.OnEnemyDie += enemy =>
             {
                 _coinDropper.DecideToDropCoin(gameObject, coinPrefab, enemy.transform.position);
@@ -101,7 +86,6 @@ namespace Source
 
         private void InitUI()
         {
-            _availableArea.Init(_playerPosition, _spaceObjectPosition.transform);
             _playerUI = Instantiate(playerUIHandlerPrefab);
             _healthUi = _playerUI.GetComponent<PlayerHealthHandler>();
             
@@ -121,6 +105,15 @@ namespace Source
             Destroy(_enemySpawner);
             Destroy(_player);
             _bootstrap.ToStateGameOver();
+        }
+
+        public void Victory()
+        {
+            Destroy(_availableArea);
+            Destroy(_spaceObjectPosition);
+            Destroy(_enemySpawner);
+            Destroy(_player);
+            _bootstrap.ToStateVictory();
         }
     }  
 }

@@ -518,7 +518,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4283971803345390105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df8fee25ce464bb389b6fd3913cfd6c8, type: 3}
+  m_Script: {fileID: 11500000, guid: fd5e6280faf95e9428ae0a3057dddab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.UI.PlayerHealthHandler
   slider: {fileID: 7549232030976492029}
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4283971803345390105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e5ec4bfe27c4307b16f8d715843ae8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 974cd23b26bca984a82a46a7cfc06da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.UI.LevelHandler
   _levelText: {fileID: 4218405279154134338}

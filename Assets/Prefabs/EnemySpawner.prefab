@@ -41,9 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5907456175419255254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff9c0b621afe994dbe3ba6794efefa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 15c5c367be95fd44ba5bc4013b6dd56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  _player: {fileID: 0}
-  _enemyPrefab: {fileID: 9119975648983595102, guid: 2fdf0b9be3844ef4e821a94e2b03f235, type: 3}
-  _camera: {fileID: 0}
+  _enemyPrefab: {fileID: 9119975648983595102, guid: e184056c1994da44ebd89741876b3063, type: 3}
