@@ -9,11 +9,14 @@ namespace Source.UI
     {
         [SerializeField] private TextMeshProUGUI _levelText;
         [SerializeField] private Slider _slider;
-
-        public void InitLevelHandler()
+        
+        private void Start()
         {
-            G.OnLevelChanged += OnLevelChanged;
             G.OnExpChanged += OnExpChanged;
+            G.OnLevelChanged += OnLevelChanged;
+
+            OnExpChanged(G.CurrentExp);
+            OnLevelChanged(G.CurrentLevel);
         }
 
         private void OnExpChanged(int value)

@@ -29,6 +29,25 @@ namespace Source.StateMachine
             _isLoading = false;
             loadingCover.SetActive(false);
         }
+        public IEnumerator LoadLevelAsync(int sceneIndex, Action callback)
+        {
+            _isLoading = true;
+            loadingCover.SetActive(true);
+            AsyncOperation loading = SceneManager.LoadSceneAsync(sceneIndex);
+            if (loading == null)
+            {
+                yield break;
+            }
+            while (!loading.isDone)
+            {
+                _loadingProgress = loading.progress;
+                yield return new WaitForEndOfFrame();
+            }
+            callback();
+            _isLoading = false;
+            loadingCover.SetActive(false);
+        }
+
 
         public bool IsLoaded()
         {

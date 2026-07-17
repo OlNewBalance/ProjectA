@@ -11,6 +11,7 @@
         
         public void Enter()
         {
+            _bs.CleanupFromGame();
             _bs.LoadScene("GameOver", () =>
             {
                 _bs.StartGameOver();

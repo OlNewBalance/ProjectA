@@ -6,9 +6,9 @@ namespace Source.Health
     {
         private Main _main;
         
-        public void InitPlayerDie(Main main)
+        public void InitPlayerDie()
         {
-            _main = main;
+            _main = Main.Instance;
         }
         
         public void Die()

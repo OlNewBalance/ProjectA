@@ -11,14 +11,11 @@ namespace Source
         private GameOverUI _gameOverUI;
         private void Awake()
         {
+            _bs = Bootstrap.Instance;
             _gameOverUI = Instantiate(gameOverUIPrefab, transform);
             _gameOverUI.InitGameOverUI(this);
         }
-
-        public void InitBootstrap(Bootstrap bootstrap)
-        {
-            _bs = bootstrap;
-        }
+        
         public void ToStateGame()
         {
             _bs.ToStateGame();

@@ -1,18 +1,19 @@
+using System;
 using Source.Objects;
 using System.Collections;
+using Source;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WormHole : MonoBehaviour
 {
-    //[SerializeField] private FollowPlayer _followPlayer;
-    [SerializeField] private SceneChanger _machine;
     [SerializeField] private int _holeRank;
     private Vector2 _transform;
     private float _attractionTime = 3;
-
+    private Bootstrap _bs;
     private void Awake()
     {
-        _transform = transform.position;
+        _bs = Bootstrap.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,13 +22,13 @@ public class WormHole : MonoBehaviour
         {
             StartCoroutine(Attraction(player));
 
-            if (Source.G.CurrentLevel != Source.G.FastTravelLVL)
+            if (G.CurrentLevel != G.FastTravelLVL)
             {
                 KickOut(player);
                 return;
             }
 
-            _machine.ChangeScene(_holeRank);
+            _bs.ChangeGameScene(_holeRank);
         }
     }
 

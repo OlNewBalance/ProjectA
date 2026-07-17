@@ -16,7 +16,6 @@ public class AvailableArea : MonoBehaviour
         {
             Debug.Log("SUKA");
         }
-        
     }
 
     public void Init( Transform playerPosition, Transform spaceObjectPosition)

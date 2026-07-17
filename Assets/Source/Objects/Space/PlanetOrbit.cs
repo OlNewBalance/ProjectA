@@ -14,7 +14,8 @@ public class PlanetOrbit : MonoBehaviour
 
     private void KickOut(Player player)
     {
-        Vector2 kickOutPoint = new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.x + Random.Range(-20, 20));
+        Vector2 kickOutPoint = new Vector2(player.transform.position.x - transform.position.x,
+            player.transform.position.y - transform.position.y).normalized;
         player._rigidbody.AddForce(kickOutPoint * Source.G.AttractionForce, ForceMode2D.Impulse);
     }
 }

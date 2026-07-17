@@ -17,6 +17,7 @@ namespace Source.UI
             if (_ready && _health != null)
             {
                 _health.OnHealthChanged += OnHealthChanged;
+                OnHealthChanged(_health.HealthAmount);
             }
         }
 

@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: dddd6a121fa7fa34f81f6cd8cc603de2
+  - enabled: 1
+    path: Assets/Scenes/Mars.unity
+    guid: 738254f750c4a014a8c1f570ca1e1e2b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: b022f9d6cf01b594088c558504ad861d, type: 3}

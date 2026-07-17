@@ -16,19 +16,28 @@ namespace Source
         
         private Main _main;
         private GameOverMain _gameOver;
-        private void Start()
+        
+        public static Bootstrap Instance { get; private set; }
+
+        private void Awake()
         {
-            if (FindObjectsByType<Bootstrap>(FindObjectsSortMode.None).Length > 1)
+            if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
                 return;
             }
-            DontDestroyOnLoad(this);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        
+        private void Start()
+        {
+            if (Instance != this) return; // дубликат, уже помечен на удаление
             InitLoading();
-            
             stateMachine = new StateMachine.StateMachine(this, StateName.Menu);
             StartCoroutine(TestStateTransition());
         }
+        
         private void InitLoading()
         {
             Loading = Instantiate(loadingPrefab, transform);
@@ -52,7 +61,11 @@ namespace Source
 
         public void StartGame()
         {
-            _main = Instantiate(mainPrefab);
+            if (!Main.Instance)
+            {
+                _main = Instantiate(mainPrefab);
+                DontDestroyOnLoad(_main);
+            }
             _main.SetBootstrap(this);
         }
 
@@ -63,19 +76,26 @@ namespace Source
         
         public void ToStateGameOver()
         {
-            Debug.Log("Die");
             stateMachine.SwitchState(StateName.GameOver);
         }
 
         public void StartGameOver()
         {
             _gameOver = Instantiate(gameOverPrefab);
-            _gameOver.InitBootstrap(this);
 
         }
         public void CleanupFromGame()
         {
             Destroy(_main);
+        }
+
+        public void ChangeGameScene(int holeRank)
+        {
+            StartCoroutine(Loading.LoadLevelAsync(holeRank, () =>
+            {
+                _main.OnGameLevelChange();
+            }));
+            
         }
     }
 }

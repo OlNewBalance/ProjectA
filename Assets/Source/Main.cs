@@ -1,4 +1,5 @@
-﻿using Source.Health;
+﻿using System;
+using Source.Health;
 using Source.Move;
 using Source.Objects;
 using Source.Pickup;
@@ -33,17 +34,31 @@ namespace Source
         private LevelHandler _playerUI;
         private PlayerHealthHandler _healthUi;
 
+        public static Main Instance {get; private set;}
+        
         private void Awake()
         {
+            Instance = this;
             _coinDropper = new CoinDropper();
+            
             InitG();
             InitCamera();
-            InitAvailableArea();
             InitSpaceObject();
             InitInputService();
             InitPlayer();
+            InitAvailableArea();
             InitUI();
             InitSpawner();
+        }
+
+        public void OnGameLevelChange()
+        {
+            InitCamera();
+            InitSpaceObject();
+            InitPlayer();
+            InitUI();
+            InitSpawner();
+            InitAvailableArea();
         }
 
         public void SetBootstrap(Bootstrap bs)
@@ -61,12 +76,13 @@ namespace Source
 
         private void InitAvailableArea()
         {
-            _availableArea = Instantiate(availableAreaPrefab, transform);
+            _availableArea = Instantiate(availableAreaPrefab);
+            _availableArea.Init(_playerPosition, _spaceObjectPosition.transform);
         }
 
         private void InitSpaceObject()
         {
-            _spaceObjectPosition = Instantiate(planetOrbitPrefab, transform);
+            _spaceObjectPosition = Instantiate(planetOrbitPrefab);
         }
 
         private void InitPlayer()
@@ -75,7 +91,7 @@ namespace Source
             _player.InputService = _is;
             _is.InitPlayer(_player);
             _player.InitPlayer(_mainCamera);
-            _player.GetComponent<PlayerDie>().InitPlayerDie(this);
+            _player.GetComponent<PlayerDie>().InitPlayerDie();
             _playerPosition = _player.GetComponent<Transform>();
         }
 
@@ -87,9 +103,8 @@ namespace Source
             
             G.OnExpChanged += i => Debug.Log(i);
             G.CurrentCoinExpValue = 10;
-            G.FastTravelLVL = 5; // УСЛОВНО, ПРЯ НАДОБНОСТИ - ПОМЕНЯТЬ
+            G.FastTravelLVL = 2;
             G.AttractionForce = 150;
-            G.CurrentLevel = 1;
             G.EarthSceneIndex = 1;
             G.MoonSceneIndex = 2;
             G.MarsSceneIndex = 3;
@@ -101,12 +116,10 @@ namespace Source
 
         private void InitUI()
         {
-            _availableArea.Init(_playerPosition, _spaceObjectPosition.transform);
             _playerUI = Instantiate(playerUIHandlerPrefab);
             _healthUi = _playerUI.GetComponent<PlayerHealthHandler>();
             
             _healthUi.InitPlayer(_player.GetComponent<IHealth>());
-            _playerUI.InitLevelHandler();
         }
 
         private static void InitG()

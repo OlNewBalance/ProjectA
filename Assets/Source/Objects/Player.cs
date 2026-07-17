@@ -8,7 +8,7 @@ using IInitiator = Source.Shoot.IInitiator;
 namespace Source.Objects
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(Move.Move))]
+    [RequireComponent(typeof(IMove))]
     [RequireComponent(typeof(ShootDefault))]
     [RequireComponent(typeof(IHealth))]
     public class Player : MonoBehaviour, IInitiator
@@ -35,7 +35,7 @@ namespace Source.Objects
 
         public void InitPlayer(Camera camera)
         {
-            _camera = Camera.main;
+            _camera = camera;
             _bulletPool = new BulletPool();
             _bulletPool.Init(bulletPrefab);
             InputService.OnShoot += Shoot;
@@ -44,6 +44,11 @@ namespace Source.Objects
         {
             _position = transform.position;
             Move();
+        }
+
+        private void OnDestroy()
+        {
+            InputService.OnShoot -= Shoot;
         }
 
         public void Shoot()
