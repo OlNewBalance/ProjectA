@@ -21,6 +21,7 @@ namespace Source
         [SerializeField] private PlanetOrbit planetOrbitPrefab;
         [SerializeField] private AvailableArea availableAreaPrefab;
         [SerializeField] private float maxRadius;
+        [SerializeField] private AudioSource ambientPrefab; 
 
         private Bootstrap _bootstrap;
         
@@ -34,6 +35,7 @@ namespace Source
         private Camera _mainCamera;
         private LevelHandler _playerUI;
         private PlayerHealthHandler _healthUi;
+        private AudioSource _ambientAudioSource;
 
         public static Main Instance {get; private set;}
         public float AvailableRadius { get; private set; }
@@ -51,6 +53,7 @@ namespace Source
             InitAvailableArea();
             InitUI();
             InitSpawner();
+            InitAmbient();
         }
 
         public void OnGameLevelChange()
@@ -61,6 +64,7 @@ namespace Source
             InitUI();
             InitSpawner();
             InitAvailableArea();
+            InitAmbient();
         }
 
         public void SetBootstrap(Bootstrap bs)
@@ -74,6 +78,12 @@ namespace Source
         private void InitInputService()
         {
             _is = GetComponent<InputService>();
+        }
+
+        private void InitAmbient()
+        {
+            _ambientAudioSource = Instantiate(ambientPrefab);
+            _ambientAudioSource.Play();
         }
 
         private void InitAvailableArea()
@@ -128,6 +138,7 @@ namespace Source
             Destroy(_spaceObjectPosition);
             Destroy(_enemySpawner);
             Destroy(_player);
+            Destroy(_ambientAudioSource);
             _bootstrap.ToStateGameOver();
         }
 
@@ -137,6 +148,7 @@ namespace Source
             Destroy(_spaceObjectPosition);
             Destroy(_enemySpawner);
             Destroy(_player);
+            Destroy(_ambientAudioSource);
             _bootstrap.ToStateVictory();
         }
     }  

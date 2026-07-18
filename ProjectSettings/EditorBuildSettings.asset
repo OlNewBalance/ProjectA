@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: f33828b594054eb4b8dfc96b431c7cb9
   - enabled: 1
     path: Assets/Scenes/Moon.unity
-    guid: de5a944f9c709044cb6c8d6cfe00f91a
+    guid: c333477350f94f342a14f155735e9c9d
   - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: 16031d9202168164d9607de1a6756d21

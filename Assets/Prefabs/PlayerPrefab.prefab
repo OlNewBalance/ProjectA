@@ -366,6 +366,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
   bulletOrigin: {fileID: 8309341358714494052}
   initiator: 1
+  onFireSoundPrefab: {fileID: 7999214929812947006, guid: 94ee93e50e94a1a45949fef806ee9f85, type: 3}
 --- !u!114 &4086392509416524773
 MonoBehaviour:
   m_ObjectHideFlags: 0

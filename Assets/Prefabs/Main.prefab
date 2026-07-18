@@ -67,6 +67,7 @@ MonoBehaviour:
   planetOrbitPrefab: {fileID: 7098388771420800120, guid: 6fd0f0080d8a9d54dad28c2b2dfe16c9, type: 3}
   availableAreaPrefab: {fileID: 3657187104272953276, guid: 9d1bfcd42b6da4942a4287d30b3754a9, type: 3}
   maxRadius: 200
+  ambientPrefab: {fileID: 2151237818130923227, guid: 0d90b8949721b5e48954cf4cba3a9d6a, type: 3}
 --- !u!58 &5451766994517261467
 CircleCollider2D:
   m_ObjectHideFlags: 0

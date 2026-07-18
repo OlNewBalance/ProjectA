@@ -159,6 +159,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7639944649174556669, guid: 8dbff08824106da45b4b5e6f4b5922c4, type: 3}
   bulletOrigin: {fileID: 6071582157555137398}
   initiator: 2
+  onFireSoundPrefab: {fileID: 7999214929812947006, guid: 94ee93e50e94a1a45949fef806ee9f85, type: 3}
 --- !u!58 &7734890041738879298
 CircleCollider2D:
   m_ObjectHideFlags: 0
