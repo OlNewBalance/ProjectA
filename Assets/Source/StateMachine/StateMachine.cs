@@ -15,7 +15,8 @@ namespace Source.StateMachine
             {
                 { StateName.Menu , new  MenuState(bs) },
                 { StateName.Game , new Game(bs) },
-                {StateName.GameOver, new GameOver(bs)}
+                {StateName.GameOver, new GameOver(bs)},
+                {StateName.Victory, new Victory(bs)}
             };
             _currentState = States[initialState];
             _currentState.Enter();
@@ -48,6 +49,7 @@ namespace Source.StateMachine
         Game,
         GameOver,
         Loading,
-        Win
+        Win,
+        Victory
     }
 }

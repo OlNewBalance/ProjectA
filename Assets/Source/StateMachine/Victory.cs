@@ -1,6 +1,6 @@
-namespace Source.StateMachine
+﻿namespace Source.StateMachine
 {
-    public class Victory : IState
+    public class Victory: IState
     {
         private Bootstrap _bs;
 
@@ -8,9 +8,10 @@ namespace Source.StateMachine
         {
             _bs = bs;
         }
-
+        
         public void Enter()
         {
+            _bs.CleanupFromGame();
             _bs.LoadScene("Victory", () =>
             {
                 _bs.StartVictory();
@@ -19,7 +20,7 @@ namespace Source.StateMachine
 
         public void Exit()
         {
-
+            
         }
     }
 }

@@ -9,26 +9,22 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 47486c5340c044c4eb14609a0321fde2
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
-    guid: c2c98d9a26e717a40916a383809e42a4
+    guid: df76ba4b7e9e0f2428636573c155850d
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
-    guid: bb54d0df4ceca784bb42162bf1c15775
-  - enabled: 1
-    path: Assets/Scenes/Earth.unity
-    guid: 2d07a0e6e2711ba4883958bf865ea31f
-  - enabled: 1
-    path: Assets/Scenes/Moon.unity
-    guid: 02f335717de2e7e4db3ef2093d664a8a
-  - enabled: 1
-    path: Assets/Scenes/Mars.unity
-    guid: e52e5dbfe8ffd534294a460755d774f3
     guid: dddd6a121fa7fa34f81f6cd8cc603de2
   - enabled: 1
     path: Assets/Scenes/Mars.unity
     guid: 738254f750c4a014a8c1f570ca1e1e2b
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: f33828b594054eb4b8dfc96b431c7cb9
+  - enabled: 1
+    path: Assets/Scenes/Moon.unity
+    guid: c333477350f94f342a14f155735e9c9d
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 16031d9202168164d9607de1a6756d21
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: b022f9d6cf01b594088c558504ad861d, type: 3}

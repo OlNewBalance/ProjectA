@@ -38,5 +38,15 @@ namespace Source.Move
         {
             maxSpeed = value;
         }
+
+        public float GetCurrentMagnitude()
+        {
+            return _rb.linearVelocity.magnitude;
+        }
+
+        public float GetMaxSpeed()
+        {
+            return maxSpeed;
+        }
     }
 }

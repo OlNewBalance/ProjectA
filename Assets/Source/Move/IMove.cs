@@ -9,5 +9,7 @@ namespace Source.Move
        public void SetSpeed(float speed);
        public void SetMaxSpeed(float value);
 
+       float GetCurrentMagnitude();
+       float GetMaxSpeed();
     }
 }

@@ -10,15 +10,15 @@ namespace Source
         [SerializeField] private LoadingPlaceholder loadingPrefab;
         [SerializeField] private Main mainPrefab;
         [SerializeField] private GameOverMain gameOverPrefab;
-        [SerializeField] private GameVictotyMain gameVictotyPrefab;
-
-        public LoadingPlaceholder Loading { get; private set; }
+        [SerializeField] private VictoryMain victoryPrefab;
+        
+        public LoadingPlaceholder Loading { get;  private set; }
         public StateMachine.StateMachine stateMachine;
-
+        
         private Main _main;
         private GameOverMain _gameOver;
-        private GameVictotyMain _gameVictoty;
-
+        private VictoryMain _victory;
+        
         public static Bootstrap Instance { get; private set; }
 
         private void Awake()
@@ -39,19 +39,22 @@ namespace Source
             stateMachine = new StateMachine.StateMachine(this, StateName.Menu);
             StartCoroutine(TestStateTransition());
         }
-
+        
         private void InitLoading()
         {
             Loading = Instantiate(loadingPrefab, transform);
             
         }
-
+        public bool LoadScene(GameScene sceneName, Action callback)
+        {
+            StartCoroutine(Loading.LoadLevelAsync(sceneName, callback));
+            return Loading.IsLoaded();
+        }
         public bool LoadScene(string sceneName, Action callback)
         {
             StartCoroutine(Loading.LoadLevelAsync(sceneName, callback));
             return Loading.IsLoaded();
         }
-
         public IEnumerator TestStateTransition()
         {
             yield return new WaitForSeconds(2f);
@@ -88,30 +91,29 @@ namespace Source
             _gameOver = Instantiate(gameOverPrefab);
 
         }
-
-        public void ToStateVictory()
-        {
-            stateMachine.SwitchState(StateName.GameOver);
-        }
-
-        public void StartVictory()
-        {
-            _gameVictoty = Instantiate(gameVictotyPrefab);
-            _gameVictoty.InitBootstrap(this);
-        }
-
         public void CleanupFromGame()
         {
             Destroy(_main);
         }
 
-        public void ChangeGameScene(int holeRank)
+        public void ChangeGameScene(GameScene holeRank)
         {
             StartCoroutine(Loading.LoadLevelAsync(holeRank, () =>
             {
                 _main.OnGameLevelChange();
             }));
             
+        }
+
+        public void ToStateVictory()
+        {
+            stateMachine.SwitchState(StateName.Victory);
+            
+        }
+
+        public void StartVictory()
+        {
+            _victory = Instantiate(victoryPrefab);
         }
     }
 }

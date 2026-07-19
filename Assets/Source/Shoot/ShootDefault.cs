@@ -9,11 +9,14 @@ namespace Source.Shoot
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Transform bulletOrigin;
         [SerializeField] private InitiatorType initiator;
+        [SerializeField] private AudioSource onFireSoundPrefab;
         private BulletPool _bulletPool;
+        private AudioSource _onFireSound;
         private void Awake()
         {
             _bulletPool = new BulletPool();
             _bulletPool.Init(bulletPrefab);
+            if (onFireSoundPrefab) _onFireSound = Instantiate(onFireSoundPrefab, transform);
         }
 
         public void Shoot(int damage)
@@ -29,6 +32,7 @@ namespace Source.Shoot
             bullet.transform.rotation = bulletOrigin.rotation;
 
             bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position);
+            if (_onFireSound) _onFireSound.Play();
         }
         
     }
