@@ -11,7 +11,10 @@ namespace Source.StateMachine
         
         public void Enter()
         {
-            _bs.LoadScene("Menu", (() => {}));
+            _bs.LoadScene("Menu", (() =>
+            {
+                _bs.StartMenu();
+            }));
         }
 
         public void Exit()

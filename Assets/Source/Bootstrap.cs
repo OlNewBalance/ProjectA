@@ -11,6 +11,7 @@ namespace Source
         [SerializeField] private Main mainPrefab;
         [SerializeField] private GameOverMain gameOverPrefab;
         [SerializeField] private VictoryMain victoryPrefab;
+        [SerializeField] private MenuMain  menuPrefab;
         
         public LoadingPlaceholder Loading { get;  private set; }
         public StateMachine.StateMachine stateMachine;
@@ -18,6 +19,7 @@ namespace Source
         private Main _main;
         private GameOverMain _gameOver;
         private VictoryMain _victory;
+        private MenuMain _menu;
         
         public static Bootstrap Instance { get; private set; }
 
@@ -37,7 +39,6 @@ namespace Source
             if (Instance != this) return; // дубликат, уже помечен на удаление
             InitLoading();
             stateMachine = new StateMachine.StateMachine(this, StateName.Menu);
-            StartCoroutine(TestStateTransition());
         }
         
         private void InitLoading()
@@ -75,12 +76,17 @@ namespace Source
             }
             _main.SetBootstrap(this);
         }
-
+        
         public void ToStateMenu()
         {
             stateMachine.SwitchState(StateName.Menu);
         }
-        
+
+        public void StartMenu()
+        {
+            _menu = Instantiate(menuPrefab);
+        }
+
         public void ToStateGameOver()
         {
             stateMachine.SwitchState(StateName.GameOver);
@@ -102,6 +108,7 @@ namespace Source
             {
                 _main.OnGameLevelChange();
             }));
+            
             
         }
 

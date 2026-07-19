@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Source.Move;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(IMove))]
 public class ForceImpact : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
+    [SerializeField] private List<Animator> _animators;
 
     private IMove _move;
 
@@ -19,7 +20,11 @@ public class ForceImpact : MonoBehaviour
     {
         float magnitude = _move.GetCurrentMagnitude();
         float maxSpeed = _move.GetMaxSpeed();
-        
-        if (_animator) _animator.SetFloat("Velocity", magnitude / maxSpeed);
+
+        foreach (var animator in _animators)
+        {
+            if (animator) animator.SetFloat("Velocity", magnitude / maxSpeed);
+            
+        }
     }
 }

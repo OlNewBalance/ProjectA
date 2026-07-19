@@ -15,8 +15,8 @@ namespace Source.StateMachine
             {
                 { StateName.Menu , new  MenuState(bs) },
                 { StateName.Game , new Game(bs) },
-                {StateName.GameOver, new GameOver(bs)},
-                {StateName.Victory, new Victory(bs)}
+                { StateName.GameOver, new GameOver(bs)},
+                { StateName.Victory, new Victory(bs)}
             };
             _currentState = States[initialState];
             _currentState.Enter();
@@ -24,7 +24,7 @@ namespace Source.StateMachine
 
         public void SwitchState(StateName name)
         {
-            if (States.ContainsKey(name))
+            if (States.ContainsKey(name) )
             {
                 _currentState.Exit();
                 _currentState = States[name];

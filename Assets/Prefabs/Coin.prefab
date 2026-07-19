@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8323025573313711866}
@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be968748c43443ba79efd191f389b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Pickup.LevelCoin
+  expValue: 0
 --- !u!1 &856460841286285966
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -6600900865227689935, guid: ca4efca9ff742b545a5864c4e44e5610, type: 3}
+  m_Sprite: {fileID: -6499700484804593776, guid: 1b3ceda79d1e16846857083eaba85fcc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

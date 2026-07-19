@@ -48,3 +48,4 @@ MonoBehaviour:
   mainPrefab: {fileID: 3611069137588935300, guid: 1e5b6339c3a735342a6c02364d570ccc, type: 3}
   gameOverPrefab: {fileID: 5485890610178058114, guid: 73f5e232e4f27c64eb79ec35fd836d22, type: 3}
   victoryPrefab: {fileID: 6079179524975948226, guid: 6041a5bf9ddc60649a4fbf4d67491f70, type: 3}
+  menuPrefab: {fileID: 6078572864856119446, guid: 2298fbd45adab354b9db30eb12ee944d, type: 3}

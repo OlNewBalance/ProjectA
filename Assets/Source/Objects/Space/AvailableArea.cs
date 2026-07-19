@@ -59,7 +59,7 @@ public class AvailableArea : MonoBehaviour
         }
         else
         {
-            _outOfAreaPlaceholder.gameObject.SetActive(false);
+            _outOfAreaPlaceholder.gameObject.SetActive(true);
         }
         for (var i = 0; i < time; i++)
         {

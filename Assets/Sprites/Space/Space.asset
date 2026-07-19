@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Space
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 2595782994636848715, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -5168919415117855101, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: 4892340499027784134, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -208895121076786611, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -9054023566672969668, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: 132741978468209620, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -3892404039119051539, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -3309132319058702614, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: 7193515199919550466, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: 8202602260471870176, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: 7398903495075202432, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -6874476401475458817, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -1242720606216065604, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -2453831552597975251, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: 4266816803186049216, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: 200761306341008072, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -1391731063, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  - {fileID: -1432706921, guid: 2bfca3eb19f7720439e006bfaedd3f29, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0

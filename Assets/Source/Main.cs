@@ -42,6 +42,11 @@ namespace Source
 
         private void Awake()
         {
+            if (Instance)
+            {
+                Destroy(gameObject);
+                return;
+            }
             Instance = this;
             _coinDropper = new CoinDropper();
             
@@ -134,21 +139,23 @@ namespace Source
 
         public void Die()
         {
+            CleanupMain();
+            _bootstrap.ToStateGameOver();
+        }
+
+        private void CleanupMain()
+        {
+            _coinDropper.CleanupLevelCoins();
             Destroy(_availableArea);
             Destroy(_spaceObjectPosition);
             Destroy(_enemySpawner);
             Destroy(_player);
             Destroy(_ambientAudioSource);
-            _bootstrap.ToStateGameOver();
         }
 
         public void Victory()
         {
-            Destroy(_availableArea);
-            Destroy(_spaceObjectPosition);
-            Destroy(_enemySpawner);
-            Destroy(_player);
-            Destroy(_ambientAudioSource);
+            CleanupMain();
             _bootstrap.ToStateVictory();
         }
     }  

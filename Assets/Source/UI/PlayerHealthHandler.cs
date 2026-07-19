@@ -7,7 +7,7 @@ namespace Source.UI
 {
     public class PlayerHealthHandler: MonoBehaviour
     {
-        [SerializeField] public Slider slider;
+        [SerializeField] public Image hpFillImage;
         
         private IHealth _health;
         private bool _ready;
@@ -34,7 +34,7 @@ namespace Source.UI
 
         private void OnHealthChanged(int value)
         {
-            slider.value = (float)_health.HealthAmount / _health.MaxHealthAmount;
+            hpFillImage.fillAmount = (float)_health.HealthAmount / _health.MaxHealthAmount;
         }
     }
 }

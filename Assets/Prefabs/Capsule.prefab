@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 3404035108675256186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2528, y: 0.479, z: 0}
-  m_LocalScale: {x: 0.4944, y: 0.521, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.8415094, g: 0.18894258, b: 0.18894258, a: 1}
+  m_Sprite: {fileID: 2208703988740019828, guid: b4ac210b9afcc894bbe071e030e617b6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -129,8 +129,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -0.002, y: 0.015}
+  m_Size: {x: 0.6, y: 2}
   m_Direction: 0
 --- !u!50 &9174139028742137955
 Rigidbody2D:
@@ -171,4 +171,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6489e3e4a217e46a623dcfe8e824cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Source.Objects.Bullet
-  damage: 1
+  _damage: 0

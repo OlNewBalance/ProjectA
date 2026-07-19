@@ -1,4 +1,5 @@
 ﻿using System;
+using Source.UI.Level;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ namespace Source.UI
     public class LevelHandler: MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _levelText;
-        [SerializeField] private Slider _slider;
+        [SerializeField] private Image fillImage;
         
         private void Start()
         {
@@ -30,7 +31,7 @@ namespace Source.UI
             {
                 v = Math.Clamp(value / G.LevelMap[G.CurrentLevel], 0, 1);
             }
-            _slider.value = v;
+            fillImage.fillAmount = v;
         }
         private void OnLevelChanged(int i)
         {
