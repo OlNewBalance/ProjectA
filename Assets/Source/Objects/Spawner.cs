@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
 
     private EnemyPool _pool;
     private Vector2 spawnPoint;
-    private int _spawnCoolDown = 8;
+    private int _spawnCoolDown = 5;
 
     public Player Player { get; set; }
     public Camera MainCamera { get; set; }

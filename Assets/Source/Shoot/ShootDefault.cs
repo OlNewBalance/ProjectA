@@ -32,7 +32,7 @@ namespace Source.Shoot
             bullet.transform.rotation = bulletOrigin.rotation;
 
             bullet.Shoot(bulletOrigin.transform.position - bulletOrigin.parent.position);
-            if (_onFireSound) _onFireSound.Play();
+            if (_onFireSound && Bootstrap.Instance.SoundCheck.isOn) _onFireSound.Play();
         }
         
     }

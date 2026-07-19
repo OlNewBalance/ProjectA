@@ -25,7 +25,7 @@ namespace Source
             get => _currentExp;
             set {
                 _currentExp = value;
-                if (LevelMap.ContainsKey(_currentLevel + 1) && LevelMap[_currentLevel + 1] < _currentExp)
+                if (LevelMap.ContainsKey(_currentLevel + 1) && LevelMap[_currentLevel + 1] <= _currentExp)
                 {
                     ChangeLevel(_currentLevel + 1);
                 }
@@ -67,7 +67,7 @@ namespace Source
                 levelMap: new Dictionary<int, int>()
                 {
                     {1, 0},
-                    {2, 10},
+                    {2, 20},
                     {3, 200},
                     {4, 400},
                     {5, 700}

@@ -2,6 +2,7 @@
 using System.Collections;
 using Source.StateMachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Source
 {
@@ -12,6 +13,7 @@ namespace Source
         [SerializeField] private GameOverMain gameOverPrefab;
         [SerializeField] private VictoryMain victoryPrefab;
         [SerializeField] private MenuMain  menuPrefab;
+        [SerializeField] public Toggle SoundCheck;
         
         public LoadingPlaceholder Loading { get;  private set; }
         public StateMachine.StateMachine stateMachine;

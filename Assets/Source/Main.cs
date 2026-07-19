@@ -6,6 +6,7 @@ using Source.Pickup;
 using Source.UI;
 using Source.WorldEvents;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Source
 {
@@ -21,7 +22,8 @@ namespace Source
         [SerializeField] private PlanetOrbit planetOrbitPrefab;
         [SerializeField] private AvailableArea availableAreaPrefab;
         [SerializeField] private float maxRadius;
-        [SerializeField] private AudioSource ambientPrefab; 
+        [SerializeField] private AudioSource ambientPrefab;
+        
 
         private Bootstrap _bootstrap;
         
@@ -88,7 +90,12 @@ namespace Source
         private void InitAmbient()
         {
             _ambientAudioSource = Instantiate(ambientPrefab);
-            _ambientAudioSource.Play();
+            _ambientAudioSource.enabled = Bootstrap.Instance.SoundCheck.isOn;
+            
+            Bootstrap.Instance.SoundCheck.onValueChanged.AddListener(val =>
+            {
+                _ambientAudioSource.enabled = val;
+            });
         }
 
         private void InitAvailableArea()
@@ -145,12 +152,12 @@ namespace Source
 
         private void CleanupMain()
         {
-            _coinDropper.CleanupLevelCoins();
             Destroy(_availableArea);
             Destroy(_spaceObjectPosition);
             Destroy(_enemySpawner);
             Destroy(_player);
             Destroy(_ambientAudioSource);
+            _coinDropper.CleanupLevelCoins();
         }
 
         public void Victory()

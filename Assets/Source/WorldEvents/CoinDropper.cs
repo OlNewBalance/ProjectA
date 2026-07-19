@@ -13,7 +13,7 @@ namespace Source.WorldEvents
             LevelCoin lc = Object.Instantiate(levelCoinPrefab, parent.transform);
             lc.transform.position = position;
             lc.expValue = G.CurrentCoinExpValue;
-            
+            lc.OnPickedUp += coin => _levelCoins.Remove(coin);
             _levelCoins.Add(lc);
         }
         
@@ -21,7 +21,7 @@ namespace Source.WorldEvents
         {
             foreach (var lc in _levelCoins)
             {
-                Object.Destroy(lc.gameObject);
+                if (lc != null) Object.Destroy(lc.gameObject);
             }
             _levelCoins.Clear();
         }
